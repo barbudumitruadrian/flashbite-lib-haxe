@@ -14,7 +14,15 @@ interface ISkinnableViewCreator extends IDisposable
 {
 	public function resize(container:DisplayObjectContainer, screenName:String, width:Float, height:Float):Void;
 	
-	/** initialize */
+	/** 
+	 * initialize
+	 * It can be initialized in two ways:
+	 * 1. a standard 'big' styleXml which must contain texts, textFormats and screens xml nodes;<br/>
+	 *    this approach is ok on small applications, where each screen will contain all data to render;
+	 *    in this case, pass null to textFormatsXml and textFormatsXml;
+	 * 2. a small styleXml that will contain only screens xml node, and a global textsXml and textFormatsXml.
+	 *    this approach is better on medium to big apps, were the internationalization (textsXml) and text formats (textFormatsXml) will be separate files
+	 */
 	public function initialize(styleXml:Xml, textsXml:Xml, textFormatsXml:Xml, language:String, screenWidth:Float, screenHeight:Float):Void;
 
 	/** construct a screen */

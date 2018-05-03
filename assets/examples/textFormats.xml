@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<textFormats>
+	<textFormat name="Helvetica_LT_CondensedBlack_Regular_40_left_0x434343_0" color="0x434343" font="Helvetica LT Condensed Black" size="40" align="left" bold="false" italic="false" letterSpacing="0" underline="false" kerning="true" leading="0" leftMargin="0" rightMargin="0" blockIndent="0" indent="0" bullet="false"/>
+	<textFormat name="Helvetica_LT_Compressed_Regular_33_center_0x434343_0.5" color="0x434343" font="Helvetica LT Compressed" size="33" align="center" bold="false" italic="false" letterSpacing="0.5" underline="false" kerning="true" leading="0" leftMargin="0" rightMargin="0" blockIndent="0" indent="0" bullet="false"/>
+	<textFormat name="Helvetica_LT_CondensedBlack_Regular_43_center_0x00BD72_0" color="0x00BD72" font="Helvetica LT Condensed Black" size="43" align="center" bold="false" italic="false" letterSpacing="0" underline="false" kerning="true" leading="0" leftMargin="0" rightMargin="0" blockIndent="0" indent="0" bullet="false"/>
+	<textFormat name="Helvetica_LT_CondensedBlack_Regular_35_left_0xFFFFFF_0.5" color="0xFFFFFF" font="Helvetica LT Condensed Black" size="35" align="left" bold="false" italic="false" letterSpacing="0.5" underline="false" kerning="true" leading="0" leftMargin="0" rightMargin="0" blockIndent="0" indent="0" bullet="false"/>
+</textFormats>

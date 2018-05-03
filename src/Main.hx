@@ -1,5 +1,6 @@
 package;
 
+import examples.ExamplesExplorer;
 import flashbite.console.Console;
 import flashbite.logger.Logger;
 import flashbite.logger.LoggerLevels;
@@ -21,7 +22,8 @@ class Main extends Sprite
 		
 		initLoggers();
 		addConsole();
-		runTestCases();
+		//runTestCases();
+		runExamplesExplorer();
 	}
 
 	private function initLoggers():Void
@@ -48,5 +50,12 @@ class Main extends Sprite
 		var totalTimeMs = Lib.getTimer() - timeStart;
 		
 		Logger.debug(this, "Running test done in " + totalTimeMs + " ms. Result is : " + runner.result.toString());
+	}
+	
+	private function runExamplesExplorer():Void
+	{
+		var examplesExplorer = new ExamplesExplorer();
+		this.addChild(examplesExplorer);
+		examplesExplorer.initializeAndStart();
 	}
 }

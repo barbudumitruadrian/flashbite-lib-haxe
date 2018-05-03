@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<texts>
+	<text id="text_complex" Def="BLA BLA COMPLEX TEXT" en="BLA BLA COMPLEX TEXT EN" fr="BLA BLA COMPLEX TEXT FR"/>
+	<text id="item1Text" Def="ITEM1 TEXT" en="ITEM1 TEXT EN" fr="ITEM1 TEXT FR"/>
+	<text id="item2Text" Def="ITEM2 TEXT" en="ITEM2 TEXT EN"/>
+</texts>
