@@ -1,2 +1,2 @@
 # flashbite-lib-haxe
-flashbite library for haxe language
+Flashbite library for haxe language
