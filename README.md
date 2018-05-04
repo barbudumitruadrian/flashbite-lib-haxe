@@ -11,3 +11,8 @@ It contains a list of helper classes, logging functionality and also a liquid la
  * interfaces: contains interfaces used globally;
  * logger: contains logging functionality : Loggers and Targets to log into;
  * skinnableview: contains the liquid layout and internationalization module.
+ 
+### Folders:
+ * flashbite : contains library;
+ * tests : contains test cases;
+ * examples : contains 2 examples for now : one simple (bg, center iamge and bottom-right text) and one complex (with template and language changing)
