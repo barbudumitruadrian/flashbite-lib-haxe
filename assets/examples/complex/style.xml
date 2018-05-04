@@ -7,7 +7,7 @@
 					<Shape width="100%" height="100%" color="0x000000" name="bg" x="0" y="0" alpha="1"/>
 					<Container name="up" x="0" y="0" alpha="1" width="100%" height="26%">
 						<Shape width="100%" height="100%" color="0x434343" name="bgUp" x="0" y="0" alpha="1"/>
-						<Text content="" messageID="text_complex" textFormat="Helvetica_LT_CondensedBlack_Regular_35_left_0xFFFFFF_0.5" width="75%" height="98%" name="titleTxt" x="1%" y="center" alpha="1" centerOnY="true"/>
+						<Text content="" messageID="text_complex" textFormat="Helvetica_LT_CondensedBlack_Regular_35_left_0xFFFFFF_0.5" width="75%" height="98%" name="mainTitleTxt" x="1%" y="center" alpha="1" centerOnY="true"/>
 					</Container>
 					<Container name="items" x="0" y="26%" alpha="1" width="100%" height="74%">
 						<Container containerType="TitleAndValueView" name="item1" x="left" y="center" alpha="1" width="46%" height="80%" marginX="3%" titleMessageID="item1Text" template="itemTemplate"/>
@@ -21,8 +21,8 @@
             <style>
                 <Container containerType="TitleAndValueView" name="itemTemplate">
 					<Image fileName="assets/examples/simple/progress_bar.png" width="100%" height="100%" name="bg" x="0" y="0" alpha="1"/>
-					<Text content="" messageID="" textFormat="Helvetica_LT_Compressed_Regular_33_center_0x434343_0.5" width="90%" height="40%" name="titleTxt" x="center" y="10%" alpha="1" centerOnY="true"/>
-					<Text content="" messageID="" textFormat="Helvetica_LT_CondensedBlack_Regular_43_center_0x00BD72_0" width="90%" height="45%" name="valueTxt" x="center" y="45%" alpha="1" centerOnY="true"/>
+					<Text content="" messageID="" textFormat="Helvetica_LT_Compressed_Regular_33_center_0x434343_0.5" width="90%" height="40%" name="titleTxt" x="center" y="10%" alpha="1"/>
+					<Text content="" messageID="" textFormat="Helvetica_LT_CondensedBlack_Regular_43_center_0x00BD72_0" width="90%" height="45%" name="valueTxt" x="center" y="45%" alpha="1"/>
 				</Container>
             </style>
         </screen>

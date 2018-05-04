@@ -1,7 +1,8 @@
 package examples;
 
 /**
- * ...
+ * List of Example names
+ * 
  * @author Adrian Barbu
  */
 @:final

@@ -19,16 +19,20 @@ class Complex extends ExampleBase
 	private var _item1:TitleAndValueView;
 	private var _item2:TitleAndValueView;
 	
-	private var _titleTxt:TextFieldSkinnable;
+	private var _mainTitleTxt:TextFieldSkinnable;
 	
 	private var _delay:IGenericActuator;
+	
+	// ====================================================================================================================================
+	// CONSTRUCTOR, DESTRUCTOR
+	// ====================================================================================================================================
 	
 	public function new() { super(ExampleNames.COMPLEX); }
 	
 	override public function dispose():Void 
 	{
 		_item1 = _item2 = null;
-		_titleTxt = null;
+		_mainTitleTxt = null;
 		if (_delay != null) {
 			Actuate.stop(_delay, null, false, false);
 			_delay = null;
@@ -37,11 +41,15 @@ class Complex extends ExampleBase
 		super.dispose();
 	}
 	
-	override function registerCustoms():Void
+	// ====================================================================================================================================
+	// PRIVATE (PROTECTED)
+	// ====================================================================================================================================
+	
+	override private function registerCustoms():Void
 	{
 		_skinnableViewCreator.registerCustomDisplayObjectContainer(TitleAndValueView.NAME, TitleAndValueView);
 	}
-	override function createProperties():Void
+	override private function createProperties():Void
 	{
 		_styleXml = getDefaultStyleXml();
 		_textsXml = getDefaultTextsXml();
@@ -51,9 +59,9 @@ class Complex extends ExampleBase
 		_width = _height = 100;
 	}
 	
-	override function internalInitialize():Void
+	override private function internalInitialize():Void
 	{
-		_titleTxt = cast HelpersGlobal.getChildByName(this, "container.up.titleTxt");
+		_mainTitleTxt = cast HelpersGlobal.getChildByName(this, "container.up.mainTitleTxt");
 		
 		_item1 = cast HelpersGlobal.getChildByName(this, "container.items.item1");
 		_item2 = cast HelpersGlobal.getChildByName(this, "container.items.item2");
@@ -61,12 +69,16 @@ class Complex extends ExampleBase
 		_item1.initialize("300");
 		_item2.initialize("500");
 	}
-	override function internalStart():Void
+	override private function internalStart():Void
 	{
 		Logger.debug(this, "internalStart");
 		
 		_delay = Actuate.timer(1).onComplete(changeLanguageTo, ["fr"]);
 	}
+	
+	// ====================================================================================================================================
+	// PRIVATE
+	// ====================================================================================================================================
 	
 	private function changeLanguageTo(newLanguage:String):Void
 	{

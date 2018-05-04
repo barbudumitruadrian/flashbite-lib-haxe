@@ -11,7 +11,7 @@ import openfl.errors.Error;
 import openfl.events.Event;
 
 /**
- * Base class for example view
+ * Base class for an example view
  * 
  * @author Adrian Barbu
  */
@@ -31,6 +31,10 @@ class ExampleBase extends Sprite implements IDisposable
 	private var _height:Float;
 	
 	private var _name:String;
+	
+	// ====================================================================================================================================
+	// CONSTRUCTOR, DESTRUCTOR
+	// ====================================================================================================================================
 	
 	private function new(name:String)
 	{
@@ -62,6 +66,10 @@ class ExampleBase extends Sprite implements IDisposable
 		_name = null;
 	}
 	
+	// ====================================================================================================================================
+	// PUBLIC
+	// ====================================================================================================================================
+	
 	@:final
 	public function initAndStart():Void
 	{
@@ -78,6 +86,10 @@ class ExampleBase extends Sprite implements IDisposable
 		internalInitialize();
 		internalStart();
 	}
+	
+	// ====================================================================================================================================
+	// PRIVATE (but they are PROTECTED ;) )
+	// ====================================================================================================================================
 	
 	private function registerCustoms():Void
 	{
@@ -96,6 +108,10 @@ class ExampleBase extends Sprite implements IDisposable
 	{
 		throw new Error("override this to internalStart");
 	}
+	
+	// ====================================================================================================================================
+	// PRIVATE
+	// ====================================================================================================================================
 	
 	@:final
 	private function onStageResize(e:Event):Void

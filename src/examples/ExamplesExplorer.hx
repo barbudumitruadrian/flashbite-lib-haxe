@@ -8,7 +8,9 @@ import openfl.events.KeyboardEvent;
 import openfl.ui.Keyboard;
 
 /**
- * ...
+ * Examples Explorer
+ * Contains a list of examples, the user can navigate with left-right keyboard keys.
+ * 
  * @author Adrian Barbu
  */
 @:final
@@ -20,10 +22,15 @@ class ExamplesExplorer extends Sprite
 	];
 	private var _currentExample:ExampleClassToNameMap;
 	
-	public function new()
-	{
-		super();
-	}
+	// ====================================================================================================================================
+	// CONSTRUCTOR, DESTRUCTOR
+	// ====================================================================================================================================
+	
+	public function new() { super(); }
+	
+	// ====================================================================================================================================
+	// PUBLIC
+	// ====================================================================================================================================
 	
 	public function initializeAndStart():Void
 	{
@@ -31,6 +38,10 @@ class ExamplesExplorer extends Sprite
 		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown, false, 0, true);
 	}
+	
+	// ====================================================================================================================================
+	// PRIVATE
+	// ====================================================================================================================================
 	
 	private function onKeyDown(e:KeyboardEvent):Void
 	{
@@ -66,7 +77,7 @@ class ExamplesExplorer extends Sprite
 		Logger.debug(this, "replaceView(index= " + index + ")");
 		
 		disposeCurrentView();
-		createAndAddView(index);
+		createAndAddNewView(index);
 		
 	}
 	private function disposeCurrentView():Void
@@ -77,7 +88,7 @@ class ExamplesExplorer extends Sprite
 			_currentExample.view = null;
 		}
 	}
-	private function createAndAddView(index:Int):Void
+	private function createAndAddNewView(index:Int):Void
 	{
 		_currentExample = _allExamples[index];
 		_currentExample.view = Type.createInstance(_currentExample.clazz, []);
