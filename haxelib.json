@@ -1,7 +1,7 @@
 {
 	"name": "flashbite-lib-haxe",
 	"url": "https://github.com/barbudumitruadrian/flashbite-lib-haxe/",
-	"license": "Apache-2.0",
+	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
 	"version": "1.0.0",
