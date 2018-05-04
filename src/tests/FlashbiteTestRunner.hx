@@ -21,7 +21,7 @@ import tests.flashbite.skinnableview.view.text.TextFieldSkinnableTestCase;
 import tests.flashbite.skinnableview.view.text.TextFieldWithValueSkinnableTestCase;
 
 /**
- * AideTestRunner is the runner for all test cases on AIDE
+ * FlashbiteTestRunner is the runner for all test cases on flashbite-lib-haxe
  * 
  * @author Adrian Barbu
  */
@@ -39,26 +39,26 @@ class FlashbiteTestRunner extends TestRunner
 	
 	private function addTests():Void
 	{
-		//core.helpers
+		//flashbite.helpers
 		add(new HelpersDateTestCase());
 		add(new HelpersGlobalTestCase());
 		add(new HelpersMathTestCase());
 		add(new HelpersStringTestCase());
 		add(new HelpersXmlTestCase());
 		
-		//core.skinnableview
+		//flashbite.skinnableview
 		add(new SkinnableViewCreatorTestCase());
 		add(new SkinnableViewCreator_RESIZE_TestCase());
 		add(new SkinnableViewCreator_RESIZE_propagation_TestCase());
 		
-		//core.skinnableview.model
+		//flashbite.skinnableview.model
 		add(new SkinnableDataTestCase());
 		add(new RawObjectTestCase());
 		add(new SkinObjectTestCase());
 		add(new TextFormatsTestCase());
 		add(new TextsTestCase());
 		
-		//core.skinnableview.view
+		//flashbite.skinnableview.view
 		add(new ContainerBaseTestCase());
 		add(new ImageSkinnableTestCase());
 		add(new MovieClipSkinnableTestCase());

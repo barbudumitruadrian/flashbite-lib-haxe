@@ -65,7 +65,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 		this.wordWrap = HelpersGlobal.translateToBoolean(skinObj.rawObject.getPropertyValue("wordWrap"));
 		this.border = HelpersGlobal.translateToBoolean(skinObj.rawObject.getPropertyValue("border"));
 		this.antiAliasType = AntiAliasType.ADVANCED;
-		_centerOnY = HelpersGlobal.translateToBoolean(skinObj.rawObject.getPropertyValue("centerOnY", true, "false"));
+		_centerOnY = HelpersGlobal.translateToBoolean(skinObj.rawObject.getPropertyValue("centerOnY", true, "true"));
 		
 		redraw();
 	}
@@ -96,7 +96,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	public function redraw():Void
 	{
 		var initialText:String = getInitialText();
-		var redrawText:Bool = initialText != this.text || this.width != skinObj.width || this.height != skinObj.height;
+		var redrawText:Bool = initialText != this.text || this.width != skinObj.width || this.height != skinObj.height || (_centerOnY && this.y != skinObj.y);
 		
 		this.x = skinObj.x;
 		this.y = skinObj.y;

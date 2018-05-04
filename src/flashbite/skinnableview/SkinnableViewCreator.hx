@@ -24,7 +24,7 @@ import openfl.errors.Error;
 @:final
 class SkinnableViewCreator implements ISkinnableViewCreator
 {
-	public static inline var VERSION:String = "0.3.0";
+	public static inline var VERSION:String = "0.3.1";
 	
 	public var skinnableData(get, null):ISkinnableData;
 	@:isVar public var language(get, set):String;
@@ -250,7 +250,7 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 
 					if (newElement != null && Std.is(newElement, ContainerBase) == false) {
 						newElement = null;
-						throw new Error("element with objProps.type == ElementType.CONTAINER and containerType = '" + containerType + "' must extend core.skinnableview.view.ContainerBase");
+						throw new Error("element with objProps.type == ElementType.CONTAINER and containerType = '" + containerType + "' must extend flashbite.skinnableview.view.ContainerBase");
 					}
 				}
 				else {
@@ -280,7 +280,7 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 					
 					if (newElement != null && Std.is(newElement, ViewBase) == false) {
 						newElement = null;
-						throw new Error("element with objProps.type == " + type + "' must extend core.skinnableview.view.ViewBase");
+						throw new Error("element with objProps.type == " + type + "' must extend flashbite.skinnableview.view.ViewBase");
 					}
 				}
 				else {

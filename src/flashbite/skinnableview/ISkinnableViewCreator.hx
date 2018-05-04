@@ -37,13 +37,13 @@ interface ISkinnableViewCreator extends IDisposable
 	
 	/** 
 	 * register a custom display object class to be created when in style xml is specified a different object type;
-	 * (see core.skinnableview.view.ViewBase)
+	 * (see flashbite.skinnableview.view.ViewBase)
 	 * @return true if registered, false otherwise 
 	 */
 	public function registerCustomDisplayObject(name:String, clazz:Dynamic, overrideCurrent:Bool = true):Bool;
 	/** 
 	 * register a custom display object container class to be created when in style xml is specified a different object containerType;
-	 * (see core.skinnableview.view.ContainerBase)
+	 * (see flashbite.skinnableview.view.ContainerBase)
 	 * @return true if registered, false otherwise */
 	public function registerCustomDisplayObjectContainer(name:String, clazz:Dynamic, overrideCurrent:Bool = true):Bool;
 
