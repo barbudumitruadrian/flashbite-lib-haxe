@@ -1,7 +1,9 @@
-package examples;
+package examples.flashbite;
 
-import examples.complex.Complex;
-import examples.simple.Simple;
+import examples.flashbite.complex.Complex;
+import examples.flashbite.ExampleBase;
+import examples.flashbite.ExampleNames;
+import examples.flashbite.simple.Simple;
 import flashbite.logger.Logger;
 import openfl.display.Sprite;
 import openfl.events.KeyboardEvent;

@@ -1,4 +1,4 @@
-package examples;
+package examples.flashbite;
 
 import flashbite.interfaces.IDisposable;
 import flashbite.logger.Logger;

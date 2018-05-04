@@ -1,6 +1,6 @@
 package;
 
-import examples.ExamplesExplorer;
+import examples.flashbite.ExamplesExplorer;
 import flashbite.console.Console;
 import flashbite.logger.Logger;
 import flashbite.logger.LoggerLevels;

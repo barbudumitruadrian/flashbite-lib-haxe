@@ -1,4 +1,4 @@
-package examples.complex.views;
+package examples.flashbite.complex.views;
 
 import flashbite.helpers.HelpersGlobal;
 import flashbite.skinnableview.model.ISkinnableData;

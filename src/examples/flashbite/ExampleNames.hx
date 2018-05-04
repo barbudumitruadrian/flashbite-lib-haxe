@@ -1,4 +1,4 @@
-package examples;
+package examples.flashbite;
 
 /**
  * List of Example names

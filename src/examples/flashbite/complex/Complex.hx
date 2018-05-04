@@ -1,7 +1,8 @@
-package examples.complex;
+package examples.flashbite.complex;
 
-import examples.ExampleBase;
-import examples.complex.views.TitleAndValueView;
+import examples.flashbite.ExampleBase;
+import examples.flashbite.complex.views.TitleAndValueView;
+import examples.flashbite.ExampleNames;
 import flashbite.helpers.HelpersGlobal;
 import flashbite.logger.Logger;
 import flashbite.skinnableview.view.text.TextFieldSkinnable;

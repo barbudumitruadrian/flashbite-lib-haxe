@@ -1,6 +1,6 @@
-package examples.simple;
+package examples.flashbite.simple;
 
-import examples.ExampleBase;
+import examples.flashbite.ExampleBase;
 import flashbite.logger.Logger;
 
 /**
