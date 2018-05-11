@@ -22,6 +22,8 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	public static inline var FALLBACK_TEXTFORMAT_NAME:String = "Helvetica";
 	public static var FALLBACK_LANGUAGES:Array<String> = [];
 	
+	private static inline var FONT_OFFSET:Float = 4;
+	
 	public var skinObj(get, null):ISkinObject;
 	private var _skinnableData:ISkinnableData;
 	
@@ -144,8 +146,8 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 			}
 			
 			if (_autoScale) {
-				var maxTextWidth:Int = Std.int(this.width  - 4);
-				var maxTextHeight:Int = Std.int(this.height - 4);
+				var maxTextWidth:Int = Std.int(this.width - FONT_OFFSET);
+				var maxTextHeight:Int = Std.int(this.height - FONT_OFFSET);
 
 				while (this.textWidth > maxTextWidth || this.textHeight > maxTextHeight) {
 					if (_initialTextFormat.size <= 4) {
@@ -192,7 +194,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	private function centerContentsOnY():Void
 	{
 		if (_centerOnY && this.textHeight > 0) {
-			this.y = Math.round(skinObj.y + (skinObj.height - this.textHeight) / 2);
+			this.y = Math.round(skinObj.y + (skinObj.height - this.textHeight) / 2 - FONT_OFFSET / 2);
 		}
 	}
 	
