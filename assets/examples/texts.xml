@@ -3,4 +3,6 @@
 	<text id="text_complex" Def="BLA BLA COMPLEX TEXT" en="BLA BLA COMPLEX TEXT EN" fr="BLA BLA COMPLEX TEXT FR"/>
 	<text id="item1Text" Def="ITEM1 TEXT" en="ITEM1 TEXT EN" fr="ITEM1 TEXT FR"/>
 	<text id="item2Text" Def="ITEM2 TEXT" en="ITEM2 TEXT EN"/>
+	
+	<text id="demoText" Def="BUTTON NAME" en="BUTTON NAME"/>
 </texts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style>
+	<screens>
+        <screen name="main">
+            <style>
+				<Text content="" messageID="" textFormat="Helvetica_LT_CondensedBlack_Regular_43_center_0x00BD72_0" width="100%" height="5%" name="titleTxt" x="0" y="top" alpha="1" marginY="1%"/>
+			
+               <Container name="default" x="left" y="center" alpha="1" width="48.5%" height="50%" marginX="1%">
+					<Shape width="100%" height="100%" color="0xFFFFFF" name="bg" x="0" y="0" alpha="1"/>
+					<Text content="" messageID="demoText" textFormat="Helvetica_LT_Compressed_Regular_100_center_0x434343" width="100%" height="35%" name="txt" x="0" y="center" alpha="1"/>
+				</Container>
+				
+				<Container name="no_center" x="right" y="center" alpha="1" width="48.5%" height="50%" marginX="1%">
+					<Shape width="100%" height="100%" color="0xFFFFFF" name="bg" x="0" y="0" alpha="1"/>
+					<Text content="" messageID="demoText" textFormat="Helvetica_LT_Compressed_Regular_100_center_0x434343" width="100%" height="35%" name="txt" x="0" y="center" alpha="1" centerOnY="false"/>
+				</Container>
+            </style>
+        </screen>
+    </screens>
+</style>

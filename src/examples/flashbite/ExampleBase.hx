@@ -109,6 +109,11 @@ class ExampleBase extends Sprite implements IDisposable
 		throw new Error("override this to internalStart");
 	}
 	
+	private function internalOnStageResize():Void
+	{
+		
+	}
+	
 	// ====================================================================================================================================
 	// PRIVATE
 	// ====================================================================================================================================
@@ -118,6 +123,8 @@ class ExampleBase extends Sprite implements IDisposable
 	{
 		if (_skinnableViewCreator != null) {
 			_skinnableViewCreator.resize(this, MAIN_SCREEN_NAME, stage.stageWidth, stage.stageHeight);
+			
+			internalOnStageResize();
 		}
 	}
 	

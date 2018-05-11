@@ -4,6 +4,7 @@ import examples.flashbite.complex.Complex;
 import examples.flashbite.ExampleBase;
 import examples.flashbite.ExampleNames;
 import examples.flashbite.simple.Simple;
+import examples.flashbite.text_center_on_y.TextCenterOnY;
 import flashbite.logger.Logger;
 import openfl.display.Sprite;
 import openfl.events.KeyboardEvent;
@@ -20,7 +21,8 @@ class ExamplesExplorer extends Sprite
 {
 	private var _allExamples:Array<ExampleClassToNameMap> = [
 		new ExampleClassToNameMap(ExampleNames.SIMPLE, Simple),
-		new ExampleClassToNameMap(ExampleNames.COMPLEX, Complex)
+		new ExampleClassToNameMap(ExampleNames.COMPLEX, Complex),
+		new ExampleClassToNameMap(ExampleNames.TEXT_CENTER_ON_Y, TextCenterOnY)
 	];
 	private var _currentExample:ExampleClassToNameMap;
 	
