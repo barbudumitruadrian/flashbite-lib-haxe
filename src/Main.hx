@@ -1,5 +1,6 @@
 package;
 
+import editor.EditorManager;
 import examples.flashbite.ExamplesExplorer;
 import flashbite.console.Console;
 import flashbite.logger.Logger;
@@ -23,7 +24,8 @@ class Main extends Sprite
 		initLoggers();
 		addConsole();
 		//runTestCases();
-		runExamplesExplorer();
+		//runExamplesExplorer();
+		runEditor();
 	}
 
 	private function initLoggers():Void
@@ -57,5 +59,12 @@ class Main extends Sprite
 		var examplesExplorer = new ExamplesExplorer();
 		this.addChild(examplesExplorer);
 		examplesExplorer.initializeAndStart();
+	}
+	
+	private function runEditor():Void
+	{
+		var editor = new EditorManager();
+		this.addChild(editor);
+		editor.initializeAndStart();
 	}
 }
