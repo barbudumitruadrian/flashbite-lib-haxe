@@ -4,12 +4,19 @@
 	</texts>
 	
 	<textFormats>
+		<textFormat name="Helvetica_LT_CondensedBlack_Regular_30_center_0x000000_0" color="0x000000" font="Helvetica LT Condensed Black" size="30" align="center" bold="false" italic="false" letterSpacing="0" underline="false" kerning="true" leading="0" leftMargin="0" rightMargin="0" blockIndent="0" indent="0" bullet="false"/>
 	</textFormats>
 	
     <screens>
         <screen name="main">
             <style>
-                <Shape width="100%" height="100%" color="0x000000" name="bg" x="0" y="0" alpha="1"/>
+                <Shape width="100%" height="100%" color="0x000000" name="bg" x="0" y="0" alpha="0.25"/>
+				
+				<Container containerType="PopupView" name="view" x="center" y="center" alpha="1" width="50%" height="50%">
+					<Shape width="100%" height="100%" color="0xFFFFFF" name="bg" x="center" y="center" alpha="1"/>
+					<Shape width="100%" height="100%" color="0x666666" name="bgText" x="center" y="bottom" alpha="1" marginY="10%"/>
+					<Text content="" messageID="" textFormat="Helvetica_LT_CondensedBlack_Regular_30_center_0x000000_0" width="100%" height="100%" name="textField" x="center" y="bottom" alpha="1" marginY="10%"/>
+				</Container>
             </style>
         </screen>
     </screens>

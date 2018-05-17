@@ -34,15 +34,18 @@ class EditorComponentViewBase extends Sprite implements IDisposable
 			_skinnableViewCreator.dispose();
 			_skinnableViewCreator = null;
 		}
+		_name = null;
 	}
 	
 	// =====================================================================================================================================
 	// PUBLIC
 	// =====================================================================================================================================
 	
-	public function initializeAndStart():Void
+	public function initialize():Void
 	{
-		_skinnableViewCreator.initialize(Xml.parse(Assets.getText("assets/editor/" + _name + "/style.xml")).firstElement(), null, null, "fr", 100, 100);
+		_skinnableViewCreator.initialize(Xml.parse(Assets.getText("assets/editor/" + _name + "/style.xml")).firstElement(), null, null, EditorConsts.language, 100, 100);
+		registerCustomObjectsInSkinnable();
+		_skinnableViewCreator.construct(this, SCREEN_NAME, 100, 100);
 	}
 	
 	public function resize(newWidth:Float, newHeight:Float):Void
@@ -50,5 +53,14 @@ class EditorComponentViewBase extends Sprite implements IDisposable
 		if (_skinnableViewCreator != null) {
 			_skinnableViewCreator.resize(this, SCREEN_NAME, newWidth, newHeight);
 		}
+	}
+	
+	// =====================================================================================================================================
+	// PRIVATE (PROTECTED)
+	// =====================================================================================================================================
+	
+	private function registerCustomObjectsInSkinnable():Void
+	{
+		//register here the custom displayObjects or displayObjectContainers
 	}
 }

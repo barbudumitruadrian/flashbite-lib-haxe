@@ -11,6 +11,7 @@ import editor.dispatcher.IEditorDispatcher;
 class EditorConsts 
 {
 	public static var dispatcher:IEditorDispatcher;
+	public static inline var language:String = "en";
 	
 	private function new() {}
 }

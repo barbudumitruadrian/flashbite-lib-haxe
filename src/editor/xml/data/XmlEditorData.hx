@@ -1,5 +1,6 @@
 package editor.xml.data;
 
+import flashbite.helpers.HelpersXml;
 import flashbite.interfaces.IDisposable;
 import haxe.xml.Parser.XmlParserException;
 
@@ -37,7 +38,19 @@ class XmlEditorData implements IDisposable
 		lastError = null;
 		
 		try {
-			var xml = Xml.parse(string);
+			var xml = Xml.parse(string).firstElement();
+			if (xml == null) {
+				throw new XmlParserException("Null xml", string, 0);
+			}
+			var textsXmlList = HelpersXml.getChildrenWithNodeName(xml, "texts");
+			if (textsXmlList == null || textsXmlList.length == 0) {
+				throw new XmlParserException("no texts xml node", string, 0);
+			}
+			var textFormatsXmlList = HelpersXml.getChildrenWithNodeName(xml, "textFormats");
+			if (textFormatsXmlList == null || textFormatsXmlList.length == 0) {
+				throw new XmlParserException("no textFormats xml node", string, 0);
+			}
+			
 			this.xml = xml;
 			this.string = string;
 			

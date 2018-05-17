@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style>
 	<texts>
+		<text id="button" Def="REDRAW"/>
 	</texts>
 	
 	<textFormats>
+		<textFormat name="Helvetica_LT_CondensedBlack_Regular_25_left_0x000000_0" color="0x000000" font="Helvetica LT Condensed Black" size="25" align="left" bold="false" italic="false" letterSpacing="0" underline="false" kerning="true" leading="0" leftMargin="0" rightMargin="0" blockIndent="0" indent="0" bullet="false"/>
+		<textFormat name="Helvetica_LT_CondensedBlack_Regular_43_center_0x000000_0" color="0x000000" font="Helvetica LT Condensed Black" size="43" align="center" bold="false" italic="false" letterSpacing="0" underline="false" kerning="true" leading="0" leftMargin="0" rightMargin="0" blockIndent="0" indent="0" bullet="false"/>
 	</textFormats>
 	
     <screens>
         <screen name="main">
             <style>
                 <Shape width="100%" height="100%" color="0x000000" name="bg" x="0" y="0" alpha="1"/>
+				
+				<Container name="up" x="center" y="top" alpha="1" width="100%" height="90%">
+					<Shape width="100%" height="100%" color="0xFFFFFF" name="bg" x="center" y="center" alpha="1"/>
+					<Text content="" messageID="" textFormat="Helvetica_LT_CondensedBlack_Regular_25_left_0x000000_0" width="100%" height="100%" name="textField" x="center" y="center" alpha="1" centerOnY="false"/>
+				</Container>
+				<Container name="bottom" x="center" y="bottom" alpha="1" width="100%" height="10%">
+					<Container name="button" x="center" y="center" alpha="1" width="25%" height="50%">
+						<Shape width="100%" height="100%" color="0xFFFFFF" name="bg" x="0" y="0" alpha="1"/>
+						<Text content="" messageID="button" textFormat="Helvetica_LT_CondensedBlack_Regular_43_center_0x000000_0" width="100%" height="50%" name="txt" x="0" y="center" alpha="1"/>
+					</Container>
+				</Container>
             </style>
         </screen>
     </screens>

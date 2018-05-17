@@ -2,7 +2,9 @@ package editor;
 
 import editor.dispatcher.EditorDispatcher;
 import editor.popup.PopupManager;
+import editor.popup.event.PopupManagerEvent;
 import editor.preview.Preview;
+import editor.preview.event.PreviewEvent;
 import editor.xml.XmlEditor;
 import editor.xml.event.XmlEditorEvent;
 import flashbite.logger.Logger;
@@ -18,9 +20,9 @@ import openfl.events.Event;
 @:final
 class EditorManager extends Sprite
 {
-	private var _xmlEditor:EditorComponentViewBase;
-	private var _preview:EditorComponentViewBase;
-	private var _popupManager:EditorComponentViewBase;
+	private var _xmlEditor:XmlEditor;
+	private var _preview:Preview;
+	private var _popupManager:PopupManager;
 	
 	public function new() { super(); }
 	
@@ -32,15 +34,15 @@ class EditorManager extends Sprite
 		//views
 		_xmlEditor = new XmlEditor();
 		this.addChild(_xmlEditor);
-		_xmlEditor.initializeAndStart();
+		_xmlEditor.initialize();
 		
 		_preview = new Preview();
 		this.addChild(_preview);
-		_preview.initializeAndStart();
+		_preview.initialize();
 		
 		_popupManager = new PopupManager();
 		this.addChild(_popupManager);
-		_popupManager.initializeAndStart();
+		_popupManager.initialize();
 		
 		//a resize
 		onStageResize(null);
@@ -49,12 +51,14 @@ class EditorManager extends Sprite
 		//wait for events
 		var allEventNames:Array<String> = [];
 		allEventNames = allEventNames.concat(XmlEditorEvent.getAll());
+		allEventNames = allEventNames.concat(PreviewEvent.getAll());
+		allEventNames = allEventNames.concat(PopupManagerEvent.getAll());
 		for (eventName in allEventNames) {
 			EditorConsts.dispatcher.addEventListener(eventName, onEvent);
 		}
 		
 		//start the xml editor at last
-		(cast (_xmlEditor, XmlEditor)).realStart();
+		_xmlEditor.startUpdating();
 	}
 	
 	private function onStageResize(e:Event):Void
@@ -78,11 +82,35 @@ class EditorManager extends Sprite
 			
 			switch (xmlEditorEvent.type) {
 				case XmlEditorEvent.PARSE_OK:
-					//redraw 
+					//redraw
+					EditorConsts.dispatcher.dispatchEvent(new PreviewEvent(PreviewEvent.RENDER, xmlEditorEvent.xml));
+					//hide popup
+					EditorConsts.dispatcher.dispatchEvent(new PopupManagerEvent(PopupManagerEvent.CLOSE));
 				case XmlEditorEvent.PARSE_NOK:
 					//popup with error
+					EditorConsts.dispatcher.dispatchEvent(new PopupManagerEvent(PopupManagerEvent.OPEN, xmlEditorEvent.message));
 				default:
 					throw new Error("unmanaged XmlEditorEvent " + e.type);
+			}
+		} else if (Std.is(e, PreviewEvent)) {
+			var previewEvent:PreviewEvent = cast e;
+			
+			switch (previewEvent.type) {
+				case PreviewEvent.RENDER:
+					_preview.render(previewEvent.styleXml);
+				default:
+					throw new Error("unmanaged PreviewEvent " + e.type);
+			}
+		} else if (Std.is(e, PopupManagerEvent)) {
+			var popupManagerEvent:PopupManagerEvent = cast e;
+			
+			switch (popupManagerEvent.type) {
+				case PopupManagerEvent.OPEN:
+					_popupManager.open(popupManagerEvent.message);
+				case PopupManagerEvent.CLOSE:
+					_popupManager.close();
+				default:
+					throw new Error("unmanaged PopupManagerEvent " + e.type);
 			}
 		} else {
 			throw new Error("unmanaged Event " + e.type);
