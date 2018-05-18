@@ -1,4 +1,4 @@
-package editor.dispatcher;
+package editor.flashbite.dispatcher;
 
 import openfl.events.EventDispatcher;
 

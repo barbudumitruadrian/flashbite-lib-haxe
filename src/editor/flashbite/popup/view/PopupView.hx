@@ -1,4 +1,4 @@
-package editor.popup.view;
+package editor.flashbite.popup.view;
 
 import flashbite.helpers.HelpersGlobal;
 import flashbite.skinnableview.model.ISkinnableData;

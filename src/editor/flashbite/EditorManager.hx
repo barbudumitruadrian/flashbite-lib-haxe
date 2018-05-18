@@ -1,12 +1,13 @@
-package editor;
+package editor.flashbite;
 
-import editor.dispatcher.EditorDispatcher;
-import editor.popup.PopupManager;
-import editor.popup.event.PopupManagerEvent;
-import editor.preview.Preview;
-import editor.preview.event.PreviewEvent;
-import editor.xml.XmlEditor;
-import editor.xml.event.XmlEditorEvent;
+import editor.flashbite.EditorConsts;
+import editor.flashbite.dispatcher.EditorDispatcher;
+import editor.flashbite.popup.PopupManager;
+import editor.flashbite.popup.event.PopupManagerEvent;
+import editor.flashbite.preview.Preview;
+import editor.flashbite.preview.event.PreviewEvent;
+import editor.flashbite.xml.XmlEditor;
+import editor.flashbite.xml.event.XmlEditorEvent;
 import flashbite.logger.Logger;
 import openfl.display.Sprite;
 import openfl.errors.Error;

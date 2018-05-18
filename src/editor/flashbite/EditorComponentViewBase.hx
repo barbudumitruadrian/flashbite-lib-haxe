@@ -1,4 +1,4 @@
-package editor;
+package editor.flashbite;
 
 import flashbite.interfaces.IDisposable;
 import flashbite.skinnableview.ISkinnableViewCreator;

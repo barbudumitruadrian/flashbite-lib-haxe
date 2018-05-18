@@ -1,6 +1,6 @@
-package editor;
+package editor.flashbite;
 
-import editor.dispatcher.IEditorDispatcher;
+import editor.flashbite.dispatcher.IEditorDispatcher;
 
 /**
  * EditorConsts will hold all global constats

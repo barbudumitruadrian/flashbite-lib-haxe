@@ -1,4 +1,4 @@
-package editor.popup.event;
+package editor.flashbite.popup.event;
 
 import openfl.events.Event;
 

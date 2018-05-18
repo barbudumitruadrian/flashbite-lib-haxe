@@ -1,6 +1,6 @@
-package editor.preview;
+package editor.flashbite.preview;
 
-import editor.preview.event.PreviewEvent;
+import editor.flashbite.preview.event.PreviewEvent;
 import flashbite.helpers.HelpersGlobal;
 import flashbite.skinnableview.ISkinnableViewCreator;
 import flashbite.skinnableview.SkinnableViewCreator;

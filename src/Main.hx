@@ -1,6 +1,6 @@
 package;
 
-import editor.EditorManager;
+import editor.flashbite.EditorManager;
 import examples.flashbite.ExamplesExplorer;
 import flashbite.console.Console;
 import flashbite.logger.Logger;

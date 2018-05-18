@@ -1,4 +1,4 @@
-package editor;
+package editor.flashbite;
 
 /**
  * Consts class for editor view names

@@ -1,4 +1,4 @@
-package editor.preview.event;
+package editor.flashbite.preview.event;
 
 import openfl.events.Event;
 

@@ -1,7 +1,8 @@
-package editor.xml;
+package editor.flashbite.xml;
 
-import editor.xml.data.XmlEditorData;
-import editor.xml.event.XmlEditorEvent;
+import editor.flashbite.EditorComponentViewNames;
+import editor.flashbite.xml.data.XmlEditorData;
+import editor.flashbite.xml.event.XmlEditorEvent;
 import flashbite.helpers.HelpersGlobal;
 import flashbite.skinnableview.view.button.SimpleButton;
 import flashbite.skinnableview.view.text.TextFieldSkinnable;

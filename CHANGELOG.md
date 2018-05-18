@@ -5,6 +5,7 @@
 * updated SkinnableViewCreator elementConstruct function to create correctly any other ContainerBase extended class (such as SimpleButton);
 * TextFieldSkinnable - deactivate mouse interaction by default;
 * updated some functions to be real private (with @:final tag).
+* added editor.
 
 
 1.0.1 (11/05/2018)

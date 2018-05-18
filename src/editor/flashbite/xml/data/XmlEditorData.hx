@@ -1,4 +1,4 @@
-package editor.xml.data;
+package editor.flashbite.xml.data;
 
 import flashbite.helpers.HelpersXml;
 import flashbite.interfaces.IDisposable;

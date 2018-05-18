@@ -1,4 +1,4 @@
-package editor.xml.event;
+package editor.flashbite.xml.event;
 
 import openfl.events.Event;
 

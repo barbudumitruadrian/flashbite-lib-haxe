@@ -1,7 +1,9 @@
-package editor.popup;
+package editor.flashbite.popup;
 
-import editor.popup.event.PopupManagerEvent;
-import editor.popup.view.PopupView;
+import editor.flashbite.EditorComponentViewNames;
+import editor.flashbite.EditorConsts;
+import editor.flashbite.popup.event.PopupManagerEvent;
+import editor.flashbite.popup.view.PopupView;
 import flashbite.helpers.HelpersGlobal;
 import openfl.events.MouseEvent;
 
