@@ -19,9 +19,11 @@
 					<Text content="" messageID="" textFormat="Helvetica_LT_CondensedBlack_Regular_25_left_0x000000_0" width="100%" height="100%" name="textField" x="center" y="center" alpha="1" centerOnY="false"/>
 				</Container>
 				<Container name="bottom" x="center" y="bottom" alpha="1" width="100%" height="10%">
-					<Container name="button" x="center" y="center" alpha="1" width="25%" height="50%">
-						<Shape width="100%" height="100%" color="0xFFFFFF" name="bg" x="0" y="0" alpha="1"/>
-						<Text content="" messageID="button" textFormat="Helvetica_LT_CondensedBlack_Regular_43_center_0x000000_0" width="100%" height="50%" name="txt" x="0" y="center" alpha="1"/>
+					<Container containerType="SimpleButton" name="button" x="center" y="center" alpha="1" width="25%" height="50%" scaleWhenDown="0.95" alphaWhenDisabled="0.75">
+						<Container name="contents" x="0" y="0" alpha="1" width="100%" height="100%">
+							<Shape width="100%" height="100%" color="0xFFFFFF" name="bg" x="0" y="0" alpha="1"/>
+							<Text content="" messageID="button" textFormat="Helvetica_LT_CondensedBlack_Regular_43_center_0x000000_0" width="100%" height="50%" name="txt" x="0" y="center" alpha="1"/>
+						</Container>
 					</Container>
 				</Container>
             </style>

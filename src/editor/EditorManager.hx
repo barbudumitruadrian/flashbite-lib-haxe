@@ -82,10 +82,10 @@ class EditorManager extends Sprite
 			
 			switch (xmlEditorEvent.type) {
 				case XmlEditorEvent.PARSE_OK:
-					//redraw
-					EditorConsts.dispatcher.dispatchEvent(new PreviewEvent(PreviewEvent.RENDER, xmlEditorEvent.xml));
 					//hide popup
 					EditorConsts.dispatcher.dispatchEvent(new PopupManagerEvent(PopupManagerEvent.CLOSE));
+					//redraw
+					EditorConsts.dispatcher.dispatchEvent(new PreviewEvent(PreviewEvent.RENDER, xmlEditorEvent.xml));
 				case XmlEditorEvent.PARSE_NOK:
 					//popup with error
 					EditorConsts.dispatcher.dispatchEvent(new PopupManagerEvent(PopupManagerEvent.OPEN, xmlEditorEvent.message));
@@ -98,6 +98,8 @@ class EditorManager extends Sprite
 			switch (previewEvent.type) {
 				case PreviewEvent.RENDER:
 					_preview.render(previewEvent.styleXml);
+				case PreviewEvent.RENDER_ERROR:
+					EditorConsts.dispatcher.dispatchEvent(new PopupManagerEvent(PopupManagerEvent.OPEN, previewEvent.message));
 				default:
 					throw new Error("unmanaged PreviewEvent " + e.type);
 			}

@@ -1,7 +1,5 @@
 package editor.dispatcher;
 
-import flashbite.logger.Logger;
-import openfl.events.Event;
 import openfl.events.EventDispatcher;
 
 /**
@@ -13,14 +11,4 @@ import openfl.events.EventDispatcher;
 class EditorDispatcher extends EventDispatcher implements IEditorDispatcher
 {
 	public function new() { super(); }
-	
-	override public function dispatchEvent(event:Event):Bool
-	{
-		Logger.debug(this, "dispatchEvent " + event.type);
-		if (hasEventListener(event.type) == false) {
-			Logger.warning(this, "this event isn't listened!!!");
-		}
-		
-		return super.dispatchEvent(event);
-	}
 }

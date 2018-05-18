@@ -12,7 +12,8 @@ import openfl.events.Event;
 import tests.FlashbiteTestRunner;
 
 /**
- * ...
+ * Root class
+ * 
  * @author Adrian Barbu
  */
 class Main extends Sprite

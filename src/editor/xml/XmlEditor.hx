@@ -3,11 +3,10 @@ package editor.xml;
 import editor.xml.data.XmlEditorData;
 import editor.xml.event.XmlEditorEvent;
 import flashbite.helpers.HelpersGlobal;
-import flashbite.skinnableview.view.ContainerBase;
+import flashbite.skinnableview.view.button.SimpleButton;
 import flashbite.skinnableview.view.text.TextFieldSkinnable;
 import openfl.Assets;
 import openfl.events.Event;
-import openfl.events.MouseEvent;
 import openfl.text.TextFieldType;
 
 /**
@@ -22,7 +21,7 @@ class XmlEditor extends EditorComponentViewBase
 	private var _data:XmlEditorData = new XmlEditorData();
 	
 	private var _textField:TextFieldSkinnable;
-	private var _button:ContainerBase;
+	private var _button:SimpleButton;
 	
 	private var _forceCheckText:Bool = true;
 	
@@ -43,7 +42,7 @@ class XmlEditor extends EditorComponentViewBase
 			_textField = null;
 		}
 		if (_button != null) {
-			_button.removeEventListener(MouseEvent.CLICK, onButtonClick);
+			_button.removeEventListener(SimpleButton.TRIGGERED, onButtonTriggered);
 			_button = null;
 		}
 		
@@ -60,10 +59,12 @@ class XmlEditor extends EditorComponentViewBase
 		
 		_textField = cast HelpersGlobal.getChildByName(this, "up.textField");
 		_textField.type = TextFieldType.INPUT;
+		_textField.mouseEnabled = true;
 		_textField.setText("");
 		
 		_button = cast HelpersGlobal.getChildByName(this, "bottom.button");
-		_button.addEventListener(MouseEvent.CLICK, onButtonClick, false, 0, true);
+		_button.initialize(true, 1);
+		_button.addEventListener(SimpleButton.TRIGGERED, onButtonTriggered, false, 0, true);
 	}
 	
 	public function startUpdating():Void
@@ -113,7 +114,7 @@ class XmlEditor extends EditorComponentViewBase
 		}
 	}
 	
-	private function onButtonClick(e:MouseEvent):Void
+	private function onButtonTriggered(e:Event):Void
 	{
 		_forceCheckText = true;
 		update();

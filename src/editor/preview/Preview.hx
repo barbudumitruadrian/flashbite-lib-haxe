@@ -1,10 +1,11 @@
 package editor.preview;
 
+import editor.preview.event.PreviewEvent;
 import flashbite.helpers.HelpersGlobal;
 import flashbite.skinnableview.ISkinnableViewCreator;
 import flashbite.skinnableview.SkinnableViewCreator;
 import flashbite.skinnableview.view.ContainerBase;
-import flashbite.skinnableview.view.ISkinnableView;
+import openfl.errors.Error;
 
 /**
  * Preview is view that will show the contents from Xml
@@ -47,9 +48,17 @@ class Preview extends EditorComponentViewBase
 	{
 		destructCreatedObjects();
 		
-		_previewCreator = new SkinnableViewCreator();
-		_previewCreator.initialize(styleXml, null, null, EditorConsts.language, _container.skinObj.width, _container.skinObj.height);
-		_previewCreator.construct(_container, EditorComponentViewBase.SCREEN_NAME, _container.skinObj.width, _container.skinObj.height);
+		try {
+			_previewCreator = new SkinnableViewCreator();
+			_previewCreator.initialize(styleXml, null, null, EditorConsts.language, _container.skinObj.width, _container.skinObj.height);
+			_previewCreator.construct(_container, EditorComponentViewBase.SCREEN_NAME, _container.skinObj.width, _container.skinObj.height);
+		} catch (e:Error) {
+			destructCreatedObjects();
+			
+			var message:String = "Error while creating views \n" + e.message;
+			
+			EditorConsts.dispatcher.dispatchEvent(new PreviewEvent(PreviewEvent.RENDER_ERROR, message));
+		}
 	}
 	
 	override public function resize(newWidth:Float, newHeight:Float):Void 
@@ -67,25 +76,12 @@ class Preview extends EditorComponentViewBase
 	
 	private function destructCreatedObjects():Void
 	{
-		if (_container != null) {
-			//dispose any added skinnableView children
-			var skinnableViewChildren:Array<ISkinnableView> = [];
-			for (childIndex in 0..._container.numChildren) {
-				var child = _container.getChildAt(childIndex);
-				if (Std.is(child, ISkinnableView)) {
-					skinnableViewChildren.push(cast child);
-				}
-			}
-			for (child in skinnableViewChildren) {
-				child.removeFromParent(true);
-			}
-			//remove any left child
-			_container.removeChildren();
-		}
-		
-		if (_previewCreator != null) {
+		if (_container != null && _previewCreator != null) {
+			_previewCreator.destruct(_container);
 			_previewCreator.dispose();
 			_previewCreator = null;
+			
+			_container.removeChildren();
 		}
 	}
 }
