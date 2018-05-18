@@ -4,9 +4,9 @@
 	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"classPath": "src/",
-	"releasenote": "improved centering of text contents using centerOnY in TextFieldSkinnable",
+	"releasenote": "adding SimpleButton, TextFieldSkinnable is now interaction disabled. @see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],
 	"dependencies": {
 		"openfl": "",

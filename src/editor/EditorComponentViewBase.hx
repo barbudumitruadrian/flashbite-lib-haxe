@@ -11,7 +11,7 @@ import openfl.display.Sprite;
  * 
  * @author Adrian Barbu
  */
-class EditorComponentViewBase extends Sprite implements IDisposable 
+class EditorComponentViewBase extends Sprite implements IDisposable
 {
 	private static inline var SCREEN_NAME:String = "main";
 	

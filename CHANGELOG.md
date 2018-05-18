@@ -1,3 +1,12 @@
+1.1.0 (18/05/2018)
+------------------
+* added SimpleButton for showing a simple button that will dispatch a TRIGGERED event when he was clicked;
+* updated SkinnableViewCreator destruct function to accept a container and to dispose any created ISkinnableView child
+* updated SkinnableViewCreator elementConstruct function to create correctly any other ContainerBase extended class (such as SimpleButton);
+* TextFieldSkinnable - deactivate mouse interaction by default;
+* updated some functions to be real private (with @:final tag).
+
+
 1.0.1 (11/05/2018)
 ------------------
 * improved centering of text contents using centerOnY in TextFieldSkinnable.
