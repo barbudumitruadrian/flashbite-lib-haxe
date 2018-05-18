@@ -52,6 +52,7 @@ class ContainerBase extends ViewBase
 	// PRIVATE
 	// ====================================================================================================================================
 	
+	@:final
 	private function updateChildren():Void
 	{
 		var childrenNow:Array<ISkinnableView> = [];
@@ -69,6 +70,7 @@ class ContainerBase extends ViewBase
 	// GETTERS
 	// ====================================================================================================================================
 	
+	@:final
 	function get_children():Array<ISkinnableView>
 	{
 		//realtime update of children

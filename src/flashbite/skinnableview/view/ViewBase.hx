@@ -59,5 +59,6 @@ class ViewBase extends Sprite implements ISkinnableView
 	// GETTERS
 	// ====================================================================================================================================
 	
+	@:final
 	function get_skinObj():ISkinObject { return skinObj; }
 }

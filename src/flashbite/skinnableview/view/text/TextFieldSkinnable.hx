@@ -74,6 +74,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 		this.mouseEnabled = false;
 	}
 	
+	@:final
 	public function removeFromParent(disposeIt:Bool = true):Void
 	{
 		if (this.parent != null) {
@@ -117,6 +118,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	// ====================================================================================================================================
 	
 	/** returns the initial text from texts xml */
+	@:final
 	public function getInitialText():String
 	{
 		var currentText:String = _skinnableData.getTextByID(skinObj.messageID, skinObj.content, skinObj.isUpperCase);
@@ -125,6 +127,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	}
 	
 	/** call this instead of tf.text = value in order to treat special management on text : ex: autoScale, truncate, colors, etc */
+	@:final
 	public function setText(value:String):Void
 	{
 		this.text = value;
@@ -193,6 +196,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	// ====================================================================================================================================
 	
 	/** reposition this.y in order to be centered */
+	@:final
 	private function centerContentsOnY():Void
 	{
 		if (_centerOnY && this.textHeight > 0) {
@@ -200,6 +204,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 		}
 	}
 	
+	@:final
 	private function replaceSpecialCharacters(text:String):String
 	{
 		if (text != null && text.indexOf("|") != -1) {
@@ -214,6 +219,7 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	// ====================================================================================================================================
 	
 	/** Make an update on textfields from container with the standard text based on skinnableData current language */
+	@:final
 	public static function recursiveUpdateLanguageTexts(container:DisplayObject):Void
 	{
 		if (Std.is(container, TextFieldSkinnable)) {
@@ -234,5 +240,6 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 	// GETTERS, SETTERS
 	// ====================================================================================================================================
 	
+	@:final
 	function get_skinObj():ISkinObject { return skinObj; }
 }
