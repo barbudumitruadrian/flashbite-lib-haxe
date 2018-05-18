@@ -70,6 +70,8 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 		_centerOnY = HelpersGlobal.translateToBoolean(skinObj.rawObject.getPropertyValue("centerOnY", true, "true"));
 		
 		redraw();
+		
+		this.mouseEnabled = false;
 	}
 	
 	public function removeFromParent(disposeIt:Bool = true):Void

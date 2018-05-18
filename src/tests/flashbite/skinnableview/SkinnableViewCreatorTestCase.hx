@@ -233,6 +233,21 @@ class SkinnableViewCreatorTestCase extends TestCase
 	// ------------------------------------------------------------------------------------------------------------------------------------
 	
 	// ------------------------------------------------------------------------------------------------------------------------------------
+	// destruct
+	public function test_destruct():Void
+	{
+		_skinnableViewCreator.initialize(_styleXml, null, null, "", 100, 100);
+		_skinnableViewCreator.construct(_container, "main", 100, 100);
+		assertTrue(_container.numChildren > 0);
+		var firstChild = _container.getChildAt(0);
+		assertEquals(_container, cast firstChild.parent);
+		_skinnableViewCreator.destruct(_container);
+		assertEquals(0, _container.numChildren);
+		assertEquals(null, firstChild.parent);
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------------
+	
+	// ------------------------------------------------------------------------------------------------------------------------------------
 	// register
 	public function test_registerCustomDisplayObject():Void
 	{

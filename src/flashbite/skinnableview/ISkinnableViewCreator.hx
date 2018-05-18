@@ -32,8 +32,8 @@ interface ISkinnableViewCreator extends IDisposable
 	 * @return the created instance
 	 */
 	public function constructChild(container:DisplayObjectContainer, screenName:String, childName:String, containerWidth:Float, containerHeight:Float):DisplayObject;
-	/** destruct a screen */
-	public function destruct(screenName:String, removeChildrenOnContainer:Bool = false):Void;
+	/** destruct any children added into a container */
+	public function destruct(container:DisplayObjectContainer):Void;
 	
 	/** 
 	 * register a custom display object class to be created when in style xml is specified a different object type;

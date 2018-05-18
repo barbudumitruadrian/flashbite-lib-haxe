@@ -6,6 +6,7 @@ import flashbite.skinnableview.model.ISkinnableData;
 import flashbite.skinnableview.model.SkinnableData;
 import flashbite.skinnableview.model.skinstyle.ISkinObject;
 import flashbite.skinnableview.view.ContainerBase;
+import flashbite.skinnableview.view.ElementContainerType;
 import flashbite.skinnableview.view.ElementType;
 import flashbite.skinnableview.view.ISkinnableView;
 import flashbite.skinnableview.view.ViewBase;
@@ -149,9 +150,19 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 		return createdElement;
 	}
 	
-	public function destruct(screenName:String, removeChildrenOnContainer:Bool = false):Void
+	public function destruct(container:DisplayObjectContainer):Void
 	{
-		//nothing for now...
+		//dispose any added skinnableView children
+		var skinnableViewChildren:Array<ISkinnableView> = [];
+		for (childIndex in 0...container.numChildren) {
+			var child = container.getChildAt(childIndex);
+			if (Std.is(child, ISkinnableView)) {
+				skinnableViewChildren.push(cast child);
+			}
+		}
+		for (child in skinnableViewChildren) {
+			child.removeFromParent(true);
+		}
 	}
 	
 	public function registerCustomDisplayObject(name:String, clazz:Dynamic, overrideCurrent:Bool = true):Bool
@@ -238,6 +249,14 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 			var containerType = HelpersString.toLowerCase(objProps.containerType);
 			if (containerType == "") {
 				newElement = new ContainerBase(objProps, skinnableData);
+			} else if (ElementContainerType.isKnown(containerType)) {
+				var clazz = ElementContainerType.getClass(containerType);
+				try {
+					newElement = Type.createInstance(clazz, [objProps, skinnableData]);
+				}
+				catch (e:Dynamic) {
+					Logger.error(this, "Unable to create container with containerType " + containerType + " and class " + clazz + ", err : " + e);
+				}
 			} else {
 				if (_databaseCustomContainers.exists(containerType)) {
 					var clazz = _databaseCustomContainers.get(containerType);
