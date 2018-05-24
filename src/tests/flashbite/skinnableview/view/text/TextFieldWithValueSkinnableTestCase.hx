@@ -57,8 +57,8 @@ class TextFieldWithValueSkinnableTestCase extends TestCase
 		var valueTextFormat = tf.getTextFormat(0, 3);
 		var lastPartTextFormat = tf.getTextFormat(4, tf.text.length);
 		
-		#if html5
-		//nothing to test on html5
+		#if (html5 || cpp)
+		//nothing to test on html5 + cpp
 		#else
 		assertEquals(Std.parseInt("0xFFFFFF"), valueTextFormat.color);
 		assertEquals(Std.parseInt("0x064413"), lastPartTextFormat.color);

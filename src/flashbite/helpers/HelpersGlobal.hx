@@ -63,11 +63,10 @@ class HelpersGlobal
 		if (realPropName != null) {
 			var realValue:Dynamic = Reflect.getProperty(obj, realPropName);
 			//this is a little tricky, we must have a specific type of Array
-			if (restrictValuesList != null && realValue != null && Std.is(realValue, String) && Std.is(restrictValuesList, Array)) {
-				var length:Int = Std.parseInt(Reflect.getProperty(restrictValuesList, "length"));
-				for (i in 0...length) {
-					var value:String = Std.string(Reflect.getProperty(restrictValuesList, Std.string(i)));
-					if (HelpersString.toLowerCase(value) == HelpersString.toLowerCase(Std.string(realValue))) {
+			if (restrictValuesList != null && realValue != null && Std.is(restrictValuesList, Array)) {
+				var array:Array<Dynamic> = cast restrictValuesList;
+				for (value in array) {
+					if (HelpersString.toLowerCase(Std.string(value)) == HelpersString.toLowerCase(Std.string(realValue))) {
 						return value;
 						break;
 					}

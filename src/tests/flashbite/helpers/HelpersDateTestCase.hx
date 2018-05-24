@@ -43,8 +43,10 @@ class HelpersDateTestCase extends TestCase
 		var outDate_incorrect_wrongFormat3 = HelpersDate.parseToDate("19991231T121212"); //no ms
 		assertTrue(outDate_incorrect_wrongFormat3 == null);
 		
+		#if !cpp
 		var outDate_incorrect_wrongFormat4 = HelpersDate.parseToDate("19991231A1212120000"); //no T
 		assertTrue(outDate_incorrect_wrongFormat4 == null);
+		#end
 		
 		//correct - Date.parseString :"YYYY-MM-DD hh:mm:ss", "YYYY-MM-DD", "hh:mm:ss"
 		var outDate_correct_parse1 = HelpersDate.parseToDate("2012-01-01 12:12:12");

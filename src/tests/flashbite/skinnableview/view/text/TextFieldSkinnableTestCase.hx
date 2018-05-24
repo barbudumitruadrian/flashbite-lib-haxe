@@ -75,8 +75,8 @@ class TextFieldSkinnableTestCase extends TestCase
 		var initialTextFormat = tf.getTextFormat();
 		
 		assertEquals(50, initialTextFormat.size);
-		#if html5
-		assertEquals("Museo Slab 900 Regular", initialTextFormat.font); //in html5 the font is set to default...
+		#if (html5 || cpp)
+		assertEquals("Museo Slab 900 Regular", initialTextFormat.font); //in html5 the font is set to default...(also in cpp)
 		#else
 		assertEquals("Helvetica", initialTextFormat.font); //since we don't have the text embeded...
 		#end
