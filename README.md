@@ -16,3 +16,4 @@ It contains a list of helper classes, logging functionality and also a liquid la
  * flashbite : contains library;
  * tests : contains test cases;
  * examples : contains 2 examples for now : one simple (bg, center image and bottom-right text) and one complex (with template and language changing).
+ * editor : contains a simple editor for editing a style xml and preview the changes.

@@ -4,9 +4,9 @@
 	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"classPath": "src/",
-	"releasenote": "adding SimpleButton, TextFieldSkinnable is now interaction disabled, added editor. @see CHANGELOG.md",
+	"releasenote": "cpp target : fixing HelpersGlobal.getCaseInsensitivePropValue function. @see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],
 	"dependencies": {
 		"openfl": "",

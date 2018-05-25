@@ -1,3 +1,8 @@
+1.1.1 (25/05/2018)
+------------------
+* cpp target : fixing HelpersGlobal.getCaseInsensitivePropValue function + updating some test cases
+
+
 1.1.0 (18/05/2018)
 ------------------
 * added SimpleButton for showing a simple button that will dispatch a TRIGGERED event when he was clicked;

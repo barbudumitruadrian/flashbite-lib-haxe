@@ -32,6 +32,7 @@ class HelpersGlobal
 		return className;
 	}
 	
+	/** Get a caseInsensitive property value from an object and translate it into a percent value; ex: 100 will become 1, 45 will become 0.45 */
 	public static function getCaseInsensitivePropValuePercent(obj:Dynamic, propName:String, log:Bool = false):Float
 	{
 		var realPropName:String = HelpersString.getCaseInsensitivePropName(obj, propName, log);
