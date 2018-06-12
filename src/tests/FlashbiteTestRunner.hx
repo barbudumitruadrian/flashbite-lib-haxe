@@ -19,6 +19,7 @@ import tests.flashbite.skinnableview.view.button.SimpleButtonTestCase;
 import tests.flashbite.skinnableview.view.image.ImageSkinnableTestCase;
 import tests.flashbite.skinnableview.view.movieclip.MovieClipSkinnableTestCase;
 import tests.flashbite.skinnableview.view.text.TextFieldSkinnableTestCase;
+import tests.flashbite.skinnableview.view.text.TextFieldWithColorSkinnableTestCase;
 import tests.flashbite.skinnableview.view.text.TextFieldWithValueSkinnableTestCase;
 
 /**
@@ -66,6 +67,7 @@ class FlashbiteTestRunner extends TestRunner
 		add(new ImageSkinnableTestCase());
 		add(new MovieClipSkinnableTestCase());
 		add(new TextFieldSkinnableTestCase());
+		add(new TextFieldWithColorSkinnableTestCase());
 		add(new TextFieldWithValueSkinnableTestCase());
 	}
 }

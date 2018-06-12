@@ -4,7 +4,7 @@
 	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"classPath": "src/",
 	"releasenote": "cpp target : fixing HelpersGlobal.getCaseInsensitivePropValue function. @see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],

@@ -5,6 +5,7 @@ import flashbite.skinnableview.view.image.ImageSkinnable;
 import flashbite.skinnableview.view.movieclip.MovieClipSkinnable;
 import flashbite.skinnableview.view.shape.ShapeSkinnable;
 import flashbite.skinnableview.view.text.TextFieldSkinnable;
+import flashbite.skinnableview.view.text.TextFieldWithColorSkinnable;
 import flashbite.skinnableview.view.text.TextFieldWithValueSkinnable;
 
 /**
@@ -25,10 +26,11 @@ class ElementType
 	public static inline var MOVIECLIP		:String = "MovieClip";
 	public static inline var TEXT			:String = "Text";
 	public static inline var TEXT_WITH_VALUE:String = "TextWithValue";
+	public static inline var TEXT_WITH_COLOR:String = "TextWithColor";
 	
 	
-	private static var _all:Array<String> =         [CONTAINER,     SHAPE,          IMAGE,          MOVIECLIP, 			TEXT, 				TEXT_WITH_VALUE];
-	private static var _allClasses:Array<Dynamic> = [ContainerBase, ShapeSkinnable, ImageSkinnable, MovieClipSkinnable, TextFieldSkinnable, TextFieldWithValueSkinnable];
+	private static var _all:Array<String> =         [CONTAINER,     SHAPE,          IMAGE,          MOVIECLIP, 			TEXT, 				TEXT_WITH_VALUE,			 TEXT_WITH_COLOR];
+	private static var _allClasses:Array<Dynamic> = [ContainerBase, ShapeSkinnable, ImageSkinnable, MovieClipSkinnable, TextFieldSkinnable, TextFieldWithValueSkinnable, TextFieldWithColorSkinnable];
 	
 	public static function getAll():Array<String> { return _all.copy(); }
 	public static function isKnown(type:String, caseInsensitive:Bool = true):Bool

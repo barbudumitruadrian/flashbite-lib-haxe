@@ -1,3 +1,8 @@
+1.2.0 (12/06/2018)
+------------------
+* added TextFieldWithColorSkinnable for changing realtime the color of a textField.
+
+
 1.1.1 (25/05/2018)
 ------------------
 * cpp target : fixing HelpersGlobal.getCaseInsensitivePropValue function + updating some test cases
