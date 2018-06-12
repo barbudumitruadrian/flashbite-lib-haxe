@@ -6,7 +6,7 @@
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
 	"version": "1.2.0",
 	"classPath": "src/",
-	"releasenote": "cpp target : fixing HelpersGlobal.getCaseInsensitivePropValue function. @see CHANGELOG.md",
+	"releasenote": "added TextFieldWithColorSkinnable for changing realtime the color of a textField. @see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],
 	"dependencies": {
 		"openfl": "",
