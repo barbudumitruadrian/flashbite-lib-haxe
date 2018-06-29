@@ -1,8 +1,9 @@
 package examples.flashbite;
 
-import examples.flashbite.complex.Complex;
 import examples.flashbite.ExampleBase;
 import examples.flashbite.ExampleNames;
+import examples.flashbite.complex.Complex;
+import examples.flashbite.nine_slice.NineSlice;
 import examples.flashbite.simple.Simple;
 import examples.flashbite.text_center_on_y.TextCenterOnY;
 import examples.flashbite.text_with_color.TextWithColor;
@@ -24,7 +25,8 @@ class ExamplesExplorer extends Sprite
 		new ExampleClassToNameMap(ExampleNames.SIMPLE, Simple),
 		new ExampleClassToNameMap(ExampleNames.COMPLEX, Complex),
 		new ExampleClassToNameMap(ExampleNames.TEXT_CENTER_ON_Y, TextCenterOnY),
-		new ExampleClassToNameMap(ExampleNames.TEXT_WITH_COLOR, TextWithColor)
+		new ExampleClassToNameMap(ExampleNames.TEXT_WITH_COLOR, TextWithColor),
+		new ExampleClassToNameMap(ExampleNames.NINE_SLICE, NineSlice)
 	];
 	private var _currentExample:ExampleClassToNameMap;
 	

@@ -1,6 +1,7 @@
 package flashbite.skinnableview.view;
 
 import flashbite.helpers.HelpersString;
+import flashbite.skinnableview.view.image.Image9SliceSkinnable;
 import flashbite.skinnableview.view.image.ImageSkinnable;
 import flashbite.skinnableview.view.movieclip.MovieClipSkinnable;
 import flashbite.skinnableview.view.shape.ShapeSkinnable;
@@ -23,14 +24,15 @@ class ElementType
 
 	public static inline var SHAPE			:String = "Shape";
 	public static inline var IMAGE			:String = "Image";
+	public static inline var IMAGE_9SLICE	:String = "Image9Slice";
 	public static inline var MOVIECLIP		:String = "MovieClip";
 	public static inline var TEXT			:String = "Text";
 	public static inline var TEXT_WITH_VALUE:String = "TextWithValue";
 	public static inline var TEXT_WITH_COLOR:String = "TextWithColor";
 	
 	
-	private static var _all:Array<String> =         [CONTAINER,     SHAPE,          IMAGE,          MOVIECLIP, 			TEXT, 				TEXT_WITH_VALUE,			 TEXT_WITH_COLOR];
-	private static var _allClasses:Array<Dynamic> = [ContainerBase, ShapeSkinnable, ImageSkinnable, MovieClipSkinnable, TextFieldSkinnable, TextFieldWithValueSkinnable, TextFieldWithColorSkinnable];
+	private static var _all:Array<String> =         [CONTAINER,     SHAPE,          IMAGE,          IMAGE_9SLICE,         MOVIECLIP,          TEXT,               TEXT_WITH_VALUE,             TEXT_WITH_COLOR];
+	private static var _allClasses:Array<Dynamic> = [ContainerBase, ShapeSkinnable, ImageSkinnable, Image9SliceSkinnable, MovieClipSkinnable, TextFieldSkinnable, TextFieldWithValueSkinnable, TextFieldWithColorSkinnable];
 	
 	public static function getAll():Array<String> { return _all.copy(); }
 	public static function isKnown(type:String, caseInsensitive:Bool = true):Bool

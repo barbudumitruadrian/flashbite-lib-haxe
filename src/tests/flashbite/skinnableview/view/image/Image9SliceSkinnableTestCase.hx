@@ -4,7 +4,7 @@ import flashbite.skinnableview.model.ISkinnableData;
 import flashbite.skinnableview.model.SkinnableData;
 import flashbite.skinnableview.model.skinstyle.ISkinObject;
 import flashbite.skinnableview.model.skinstyle.SkinObject;
-import flashbite.skinnableview.view.image.ImageSkinnable;
+import flashbite.skinnableview.view.image.Image9SliceSkinnable;
 import haxe.unit.TestCase;
 
 /**
@@ -13,7 +13,7 @@ import haxe.unit.TestCase;
  * @author Adrian Barbu
  */
 @:final
-class ImageSkinnableTestCase extends TestCase
+class Image9SliceSkinnableTestCase extends TestCase
 {
 	// ------------------------------------------------------------------------------------------------------------------------------------
 	public function new() { super(); }
@@ -31,7 +31,7 @@ class ImageSkinnableTestCase extends TestCase
 	
 	public function test_props():Void
 	{
-		var skinXmlString:String = '<Image fileName="car_parking_body" width="40" height="60" name="car_parking_body" x="0" y="0" alpha="1" color="0x666666"/>';
+		var skinXmlString:String = '<Image fileName="alert_border_full2" width="40" height="60" name="alert_border_full2" x="0" y="0" alpha="1" color="0x666666"/>';
 		var skinnableDataXmlString:String = 
 		'<style>' +
 			'<texts/>' +
@@ -46,7 +46,7 @@ class ImageSkinnableTestCase extends TestCase
 		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 100, 100, false);
 		var skinnableData:ISkinnableData = new SkinnableData();
 		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 100, 100);
-		var image = new ImageSkinnable(skinObj, skinnableData);
+		var image = new Image9SliceSkinnable(skinObj, skinnableData);
 		
 		assertEquals(Std.parseFloat("0"), image.x);
 		assertEquals(Std.parseFloat("0"), image.y);
@@ -54,8 +54,8 @@ class ImageSkinnableTestCase extends TestCase
 		assertEquals(Std.parseFloat("60"), image.height);
 		assertEquals(Std.parseInt("0x666666"), image.transform.colorTransform.color);
 		
-		//fallback bmpData with 1x1 dimension
-		assertEquals(1, image.bitmapData.width);
-		assertEquals(1, image.bitmapData.height);
+		//bmpData must have the specified dimension in skinObj
+		assertEquals(40, image.bitmapData.width);
+		assertEquals(60, image.bitmapData.height);
 	}
 }
