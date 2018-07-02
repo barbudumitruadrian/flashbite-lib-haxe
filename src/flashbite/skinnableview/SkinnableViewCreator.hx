@@ -266,8 +266,9 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 					catch (e:Dynamic) {
 						Logger.error(this, "Unable to create container with containerType " + containerType + " and class " + clazz + ", err : " + e);
 					}
-
-					if (newElement != null && Std.is(newElement, ContainerBase) == false) {
+					
+					var isCorrectViewContainer:Bool = Std.is(newElement, ContainerBase);
+					if (newElement != null && isCorrectViewContainer == false) {
 						newElement = null;
 						throw new Error("element with objProps.type == ElementType.CONTAINER and containerType = '" + containerType + "' must extend flashbite.skinnableview.view.ContainerBase");
 					}
@@ -297,9 +298,10 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 						throw new Error("Registered CustomDisplayObject with objProps.type = '" + type + "' and class " + clazz + " can't be created");
 					}
 					
-					if (newElement != null && Std.is(newElement, ViewBase) == false) {
+					var isCorrectView:Bool = Std.is(newElement, ViewBase) || Std.is(newElement, ISkinnableView);
+					if (newElement != null && isCorrectView == false) {
 						newElement = null;
-						throw new Error("element with objProps.type == " + type + "' must extend flashbite.skinnableview.view.ViewBase");
+						throw new Error("element with objProps.type == " + type + "' must extend flashbite.skinnableview.view.ViewBase or must be an ISkinnableView");
 					}
 				}
 				else {

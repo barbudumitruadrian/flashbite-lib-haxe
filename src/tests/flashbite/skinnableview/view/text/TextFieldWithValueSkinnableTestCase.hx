@@ -143,4 +143,33 @@ class TextFieldWithValueSkinnableTestCase extends TestCase
 		//and must contain the truncation value
 		assertTrue(tf.text.indexOf("...") != -1);
 	}
+	public function test_setValue_withNewText():Void
+	{
+		var skinXmlString:String = '<Text content="{value} data" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0"/>';
+		var skinnableDataXmlString:String = 
+		'<style>' +
+			'<texts/>' +
+			'<textFormats/>' +
+			'<screens>' +
+				'<screen name="main">' +
+					'<style/>' +
+				'</screen>' +
+			'</screens>' +
+		'</style>';
+		
+		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 300, 300, false);
+		var skinnableData:ISkinnableData = new SkinnableData();
+		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 300, 300);
+		var tf = new TextFieldWithValueSkinnable(skinObj, skinnableData);
+		
+		//new text doesn't contain replacement, so we will use initialText
+		tf.setValue("", "test");
+		assertEquals(" data", tf.text);
+		
+		tf.setValue("", "{value} someNewData");
+		assertEquals(" someNewData", tf.text);
+		
+		tf.setValue("10", "{value} someNewData");
+		assertEquals("10 someNewData", tf.text);
+	}
 }

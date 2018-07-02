@@ -109,7 +109,7 @@ class ContainerBaseTestCase extends TestCase
 		skinnableViewCreator.construct(root, "main", 100, 100);
 		
 		var container:ContainerBase = cast HelpersGlobal.getChildByName(root, "container");
-		var shape1:Shape1 = cast cast HelpersGlobal.getChildByName(root, "container.shape1");
+		var shape1:Shape1 = cast HelpersGlobal.getChildByName(root, "container.shape1");
 		
 		//removeFromParent(false) must remove it from his parent
 		container.removeFromParent(false);
@@ -156,13 +156,14 @@ class ContainerBaseTestCase extends TestCase
 		assertTrue(shape1.disposeWasCalled);
 	}
 }
+
 class Shape1 extends ViewBase
 {
 	public var disposeWasCalled:Bool = false;
 	
 	public function new(skinObj:ISkinObject, skinnableData:ISkinnableData) { super(skinObj, skinnableData); }
 	
-	override public function dispose():Void 
+	override public function dispose():Void
 	{
 		disposeWasCalled = true;
 		

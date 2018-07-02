@@ -1,3 +1,9 @@
+1.3.2 (02/07/2018)
+------------------
+* SkinnableViewCreator - updated elementConstruct to accept also an ISkinnableView as a constructed view;
+* TextFieldWithValueSkinnable - updated setValue function to accept also newText as a parameter.
+
+
 1.3.1 (02/07/2018)
 ------------------
 * Image9SliceSkinnable - added possibility to change his dimensions by code (setWidthAndHeight function) + test case + updated example.

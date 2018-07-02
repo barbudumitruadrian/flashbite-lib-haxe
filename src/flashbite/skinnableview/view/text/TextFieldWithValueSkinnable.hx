@@ -34,6 +34,8 @@ class TextFieldWithValueSkinnable extends TextFieldSkinnable
 			_valueTextFormat = _skinnableData.getTextFormat(skinObj.rawObject.getPropertyValue("valueTextFormat"), true);
 			//just to be sure, set same font type
 			_valueTextFormat.font = _initialTextFormat.font;
+		} else {
+			_valueTextFormat = _skinnableData.getTextFormat(skinObj.textFormat, true);
 		}
 	}
 	
@@ -49,9 +51,9 @@ class TextFieldWithValueSkinnable extends TextFieldSkinnable
 	// PUBLIC
 	// ====================================================================================================================================
 	
-	public function setValue(value:String):Void
+	public function setValue(value:String, newText:String = null):Void
 	{
-		var textUsedNow:String = this.getInitialText();
+		var textUsedNow:String = (newText != null && newText.indexOf(_valueReplacement) != -1) ? newText : this.getInitialText();
 		if (this.text != textUsedNow) {
 			this.setText(textUsedNow);
 		}

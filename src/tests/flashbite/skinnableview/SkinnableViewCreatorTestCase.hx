@@ -8,6 +8,7 @@ import flashbite.skinnableview.model.ISkinnableData;
 import flashbite.skinnableview.model.skinstyle.ISkinObject;
 import flashbite.skinnableview.view.ContainerBase;
 import flashbite.skinnableview.view.ElementType;
+import flashbite.skinnableview.view.ISkinnableView;
 import flashbite.skinnableview.view.ViewBase;
 import haxe.unit.TestCase;
 import openfl.display.Sprite;
@@ -309,6 +310,22 @@ class SkinnableViewCreatorTestCase extends TestCase
 		}
 		assertFalse(error);
 	}
+	public function test_registerCustomDisplayObjectCorrect2():Void
+	{
+		_skinnableViewCreator.initialize(_styleXmlWithCustomDisplayObject, null, null, "", 100, 100);
+		var registeredOk = _skinnableViewCreator.registerCustomDisplayObject("ImageNew", SkinnableCustomDisplayObjectCorrect2);
+		assertTrue(registeredOk);
+		
+		//make sure we don't fail the construct
+		var error = false;
+		try {
+			_skinnableViewCreator.construct(_container, "main", 100, 100);
+		} catch (e:Dynamic) {
+			Logger.error(this, e);
+			error = true;
+		}
+		assertFalse(error);
+	}
 	
 	public function test_registerCustomDisplayObjectContainer():Void
 	{
@@ -420,6 +437,24 @@ class SkinnableCustomDisplayObjectFail extends Sprite
 class SkinnableCustomDisplayObjectCorrect extends ViewBase
 {
 	public function new(skinObj:ISkinObject, skinnableData:ISkinnableData) { super(skinObj, skinnableData); }
+}
+class SkinnableCustomDisplayObjectCorrect2 extends Sprite implements ISkinnableView
+{
+	public var skinObj(get, null):ISkinObject;
+	
+	public function new(skinObj:ISkinObject, skinnableData:ISkinnableData)
+	{
+		super();
+		
+		this.skinObj = skinObj;
+	}
+	
+	public function removeFromParent(disposeIt:Bool = true):Void {}
+	public function dispose():Void {}
+	
+	public function redraw():Void {}
+	
+	function get_skinObj():ISkinObject { return skinObj; }
 }
 
 class SkinnableCustomDisplayObjectContainerFail extends Sprite
