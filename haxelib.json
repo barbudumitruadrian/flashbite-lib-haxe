@@ -4,9 +4,9 @@
 	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"classPath": "src/",
-	"releasenote": "added Image9SliceSkinnable - a 9 slice image that scales without distortion. @see CHANGELOG.md",
+	"releasenote": "Image9SliceSkinnable - added possibility to change his dimensions by code (setWidthAndHeight function) + test case + updated example.. @see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],
 	"dependencies": {
 		"openfl": "",
