@@ -2,6 +2,7 @@ package examples.flashbite.nine_slice;
 
 import flashbite.helpers.HelpersGlobal;
 import flashbite.logger.Logger;
+import flashbite.skinnableview.view.image.Image9SliceSkinnable;
 import flashbite.skinnableview.view.text.TextFieldSkinnable;
 
 /**
@@ -13,6 +14,9 @@ import flashbite.skinnableview.view.text.TextFieldSkinnable;
 class NineSlice extends ExampleBase
 {
 	private var _titleTxt:TextFieldSkinnable;
+	
+	private var _image:Image9SliceSkinnable;
+	private var _changeDimensionByCode:Bool = false;
 	
 	// ====================================================================================================================================
 	// CONSTRUCTOR, DESTRUCTOR
@@ -41,6 +45,8 @@ class NineSlice extends ExampleBase
 	override private function internalInitialize():Void
 	{
 		_titleTxt = cast HelpersGlobal.getChildByName(this, "titleTxt");
+		_image = cast HelpersGlobal.getChildByName(this, "image");
+		
 		updateTitle();
 	}
 	override private function internalStart():Void
@@ -53,6 +59,10 @@ class NineSlice extends ExampleBase
 	override private function internalOnStageResize():Void
 	{
 		updateTitle();
+		
+		if (_changeDimensionByCode && _image != null) {
+			_image.setWidthAndHeight(_titleTxt.width/2, -1);
+		}
 	}
 	
 	private function updateTitle():Void

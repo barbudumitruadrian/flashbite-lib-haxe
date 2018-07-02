@@ -36,6 +36,11 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 	private var _scale9Grid:Rectangle;
 	private var _currentBmpData:BitmapData;
 	
+	//flag variable to reset the dimension of item when redraw is called
+	private var _isDefaultRedraw:Bool = true;
+	private var _standardWidth:Float = -1;
+	private var _standardHeight:Float = -1;
+	
 	// ====================================================================================================================================
 	// CONSTRUCTOR, DESTRUCTOR
 	// ====================================================================================================================================
@@ -90,20 +95,54 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 	}
 	
 	// ====================================================================================================================================
+	// PUBLIC
+	// ====================================================================================================================================
+	
+	public function setWidthAndHeight(newWidth:Float = -1, newHeight:Float = -1):Void
+	{
+		_standardWidth = newWidth;
+		_standardHeight = newHeight;
+		_isDefaultRedraw = false;
+		redraw();
+		_isDefaultRedraw = true;
+	}
+	
+	// ====================================================================================================================================
 	// Redraw
 	// ====================================================================================================================================
 	
 	public function redraw():Void
 	{
+		if (_isDefaultRedraw) {
+			_standardWidth = _standardHeight = -1;
+		}
+		
+		var useDefaultWidth:Bool = (_standardWidth == -1);
+		if (useDefaultWidth) {
+			_standardWidth = skinObj.width;
+		}
+		
+		var useDefaultHeight:Bool = (_standardHeight == -1);
+		if (useDefaultHeight) {
+			_standardHeight = skinObj.height;
+		}
+		
 		disposeCurrentBmpData();
-		_currentBmpData = new BitmapData(Std.int(skinObj.width), Std.int(skinObj.height), true, 0x00FFFFFF);
+		_currentBmpData = new BitmapData(Std.int(_standardWidth), Std.int(_standardHeight), true, 0x00FFFFFF);
 		draw9SliceParts();
 		this.bitmapData = _currentBmpData;
 		
 		this.x = skinObj.x;
 		this.y = skinObj.y;
-		this.width = skinObj.width;
-		this.height = skinObj.height;
+		this.width = _standardWidth;
+		this.height = _standardHeight;
+		
+		if (useDefaultWidth) {
+			_standardWidth = -1;
+		}
+		if (useDefaultHeight) {
+			_standardHeight = -1;
+		}
 	}
 	
 	// ====================================================================================================================================
@@ -134,7 +173,7 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 		//top.center
 		RECTANGLE_HELPER.setTo(_scale9Grid.x, 0, _scale9Grid.width, _scale9Grid.y);
 		MATRIX_HELPER.identity();
-		newWidth = skinObj.width - (_scale9Grid.x + (_rootBmpData.width - _scale9Grid.right));
+		newWidth = _standardWidth - (_scale9Grid.x + (_rootBmpData.width - _scale9Grid.right));
 		modScaleX = newWidth / _scale9Grid.width;
 		MATRIX_HELPER.scale(modScaleX, 1);
 		MATRIX_HELPER.tx -= _scale9Grid.width * (modScaleX - 1);
@@ -143,7 +182,7 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 		//top.right
 		RECTANGLE_HELPER.setTo(_scale9Grid.x + _scale9Grid.width, 0, _rootBmpData.width - (_scale9Grid.x + _scale9Grid.width), _scale9Grid.y);
 		MATRIX_HELPER.identity();
-		modX = skinObj.width - _rootBmpData.width;
+		modX = _standardWidth - _rootBmpData.width;
 		RECTANGLE_HELPER.x += modX;
 		MATRIX_HELPER.tx += modX;
 		_currentBmpData.draw(_rootBmpData, MATRIX_HELPER, null, null, RECTANGLE_HELPER, true);
@@ -151,7 +190,7 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 		//center.left
 		RECTANGLE_HELPER.setTo(0, _scale9Grid.y, _scale9Grid.x, _scale9Grid.height);
 		MATRIX_HELPER.identity();
-		newHeight = skinObj.height - (_scale9Grid.y + (_rootBmpData.height - _scale9Grid.bottom));
+		newHeight = _standardHeight - (_scale9Grid.y + (_rootBmpData.height - _scale9Grid.bottom));
 		modScaleY = newHeight / _scale9Grid.height;
 		MATRIX_HELPER.scale(1, modScaleY);
 		MATRIX_HELPER.ty -= _scale9Grid.height * (modScaleY-1);
@@ -160,9 +199,9 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 		//center.center
 		RECTANGLE_HELPER.setTo(_scale9Grid.x, _scale9Grid.y, _scale9Grid.width, _scale9Grid.height);
 		MATRIX_HELPER.identity();
-		newWidth = skinObj.width - (_scale9Grid.x + (_rootBmpData.width - _scale9Grid.right));
+		newWidth = _standardWidth - (_scale9Grid.x + (_rootBmpData.width - _scale9Grid.right));
 		modScaleX = newWidth / _scale9Grid.width;
-		newHeight = skinObj.height - (_scale9Grid.y + (_rootBmpData.height - _scale9Grid.bottom));
+		newHeight = _standardHeight - (_scale9Grid.y + (_rootBmpData.height - _scale9Grid.bottom));
 		modScaleY = newHeight / _scale9Grid.height;
 		MATRIX_HELPER.scale(modScaleX, modScaleY);
 		MATRIX_HELPER.tx -= _scale9Grid.width * (modScaleX - 1);
@@ -173,10 +212,10 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 		//center.right
 		RECTANGLE_HELPER.setTo(_scale9Grid.x + _scale9Grid.width, _scale9Grid.y, _rootBmpData.width - (_scale9Grid.x + _scale9Grid.width), _scale9Grid.height);
 		MATRIX_HELPER.identity();
-		modX = skinObj.width - _rootBmpData.width;
+		modX = _standardWidth - _rootBmpData.width;
 		RECTANGLE_HELPER.x += modX;
 		MATRIX_HELPER.tx += modX;
-		newHeight = skinObj.height - (_scale9Grid.y + (_rootBmpData.height - _scale9Grid.bottom));
+		newHeight = _standardHeight - (_scale9Grid.y + (_rootBmpData.height - _scale9Grid.bottom));
 		modScaleY = newHeight / _scale9Grid.height;
 		MATRIX_HELPER.scale(1, modScaleY);
 		MATRIX_HELPER.ty -= _scale9Grid.height * (modScaleY-1);
@@ -186,27 +225,27 @@ class Image9SliceSkinnable extends Bitmap implements ISkinnableView
 		//bottom.left
 		RECTANGLE_HELPER.setTo(0, _scale9Grid.height + _scale9Grid.y, _scale9Grid.x, _rootBmpData.height - (_scale9Grid.height + _scale9Grid.y));
 		MATRIX_HELPER.identity();
-		modY = skinObj.height - _rootBmpData.height;
+		modY = _standardHeight - _rootBmpData.height;
 		RECTANGLE_HELPER.y += modY;
 		MATRIX_HELPER.ty += modY;
 		_currentBmpData.draw(_rootBmpData, MATRIX_HELPER, null, null, RECTANGLE_HELPER, true);
 		//bottom.center
 		RECTANGLE_HELPER.setTo(_scale9Grid.x, _scale9Grid.height + _scale9Grid.y, _scale9Grid.width, _rootBmpData.height - (_scale9Grid.height + _scale9Grid.y));
 		MATRIX_HELPER.identity();
-		newWidth = skinObj.width - (_scale9Grid.x + (_rootBmpData.width - _scale9Grid.right));
+		newWidth = _standardWidth - (_scale9Grid.x + (_rootBmpData.width - _scale9Grid.right));
 		modScaleX = newWidth / _scale9Grid.width;
 		MATRIX_HELPER.scale(modScaleX, 1);
 		MATRIX_HELPER.tx -= _scale9Grid.width * (modScaleX - 1);
 		RECTANGLE_HELPER.width = newWidth;
-		modY = skinObj.height - _rootBmpData.height;
+		modY = _standardHeight - _rootBmpData.height;
 		MATRIX_HELPER.ty += modY;
 		RECTANGLE_HELPER.y += modY;
 		_currentBmpData.draw(_rootBmpData, MATRIX_HELPER, null, null, RECTANGLE_HELPER, true);
 		//bottom.right
 		RECTANGLE_HELPER.setTo(_scale9Grid.x + _scale9Grid.width, _scale9Grid.height + _scale9Grid.y, _rootBmpData.width - (_scale9Grid.x + _scale9Grid.width), _rootBmpData.height - (_scale9Grid.height + _scale9Grid.y));
 		MATRIX_HELPER.identity();
-		modX = skinObj.width - _rootBmpData.width;
-		modY = skinObj.height - _rootBmpData.height;
+		modX = _standardWidth - _rootBmpData.width;
+		modY = _standardHeight - _rootBmpData.height;
 		RECTANGLE_HELPER.x += modX;
 		RECTANGLE_HELPER.y += modY;
 		MATRIX_HELPER.tx += modX;

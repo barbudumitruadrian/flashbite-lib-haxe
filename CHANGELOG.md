@@ -1,3 +1,8 @@
+1.3.1 (02/07/2018)
+------------------
+* Image9SliceSkinnable - added possibility to change his dimensions by code (setWidthAndHeight function) + test case + updated example.
+
+
 1.3.0 (29/06/2018)
 ------------------
 * added Image9SliceSkinnable - a 9 slice image that scales without distortion;

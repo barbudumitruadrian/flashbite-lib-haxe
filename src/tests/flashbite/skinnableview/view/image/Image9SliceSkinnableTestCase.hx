@@ -58,4 +58,49 @@ class Image9SliceSkinnableTestCase extends TestCase
 		assertEquals(40, image.bitmapData.width);
 		assertEquals(60, image.bitmapData.height);
 	}
+	
+	public function test_set_dimension():Void
+	{
+		var skinXmlString:String = '<Image fileName="alert_border_full2" width="40" height="60" name="alert_border_full2" x="0" y="0" alpha="1" color="0x666666"/>';
+		var skinnableDataXmlString:String = 
+		'<style>' +
+			'<texts/>' +
+			'<textFormats/>' +
+			'<screens>' +
+				'<screen name="main">' +
+					'<style/>' +
+				'</screen>' +
+			'</screens>' +
+		'</style>';
+		
+		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 100, 100, false);
+		var skinnableData:ISkinnableData = new SkinnableData();
+		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 100, 100);
+		var image = new Image9SliceSkinnable(skinObj, skinnableData);
+		
+		//bmpData must have the specified dimension in skinObj
+		assertEquals(40, image.bitmapData.width);
+		assertEquals(60, image.bitmapData.height);
+		
+		image.setWidthAndHeight(-1, -1);
+		assertEquals(Std.parseFloat("40"), image.width);
+		assertEquals(Std.parseFloat("60"), image.height);
+		
+		image.setWidthAndHeight(1000, 1000);
+		assertEquals(Std.parseFloat("1000"), image.width);
+		assertEquals(Std.parseFloat("1000"), image.height);
+		
+		image.setWidthAndHeight(1000, -1);
+		assertEquals(Std.parseFloat("1000"), image.width);
+		assertEquals(Std.parseFloat("60"), image.height);
+		
+		image.setWidthAndHeight(-1, 1000);
+		assertEquals(Std.parseFloat("40"), image.width);
+		assertEquals(Std.parseFloat("1000"), image.height);
+		
+		//now a redraw will reset
+		image.redraw();
+		assertEquals(Std.parseFloat("40"), image.width);
+		assertEquals(Std.parseFloat("60"), image.height);
+	}
 }
