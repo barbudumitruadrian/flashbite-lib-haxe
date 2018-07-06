@@ -25,8 +25,6 @@ import openfl.errors.Error;
 @:final
 class SkinnableViewCreator implements ISkinnableViewCreator
 {
-	public static inline var VERSION:String = "0.3.1";
-	
 	public var skinnableData(get, null):ISkinnableData;
 	@:isVar public var language(get, set):String;
 	
@@ -118,7 +116,7 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 		_screenName = null;
 	}
 	
-	public function constructChild(container:DisplayObjectContainer, screenName:String, childName:String, containerWidth:Float, containerHeight:Float):DisplayObject
+	public function constructChild(container:DisplayObjectContainer, screenName:String, childName:String, containerWidth:Float = -1, containerHeight:Float = -1):DisplayObject
 	{
 		_screenName = HelpersString.toLowerCase(screenName);
 		childName = HelpersString.toLowerCase(childName);
@@ -137,7 +135,12 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 		var createdElement:DisplayObject = null;
 
 		if (found) {
+			if (containerWidth == -1 || containerHeight == -1) {
+				containerWidth = objProps.width;
+				containerHeight = objProps.height;
+			}
 			objProps.resize(containerWidth, containerHeight);
+			
 			//create and add it
 			createdElement = addElementToContainer(container, objProps, false);
 		}

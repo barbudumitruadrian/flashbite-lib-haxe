@@ -1,3 +1,8 @@
+1.3.3 (06/07/2018)
+------------------
+* SkinnableViewCreator - updated constructChild to calculate itself the dimensions of the child to create.
+
+
 1.3.2 (02/07/2018)
 ------------------
 * SkinnableViewCreator - updated elementConstruct to accept also an ISkinnableView as a constructed view;

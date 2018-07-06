@@ -31,7 +31,7 @@ interface ISkinnableViewCreator extends IDisposable
 	 * construct a child from a screen and add it to a container; 
 	 * @return the created instance
 	 */
-	public function constructChild(container:DisplayObjectContainer, screenName:String, childName:String, containerWidth:Float, containerHeight:Float):DisplayObject;
+	public function constructChild(container:DisplayObjectContainer, screenName:String, childName:String, containerWidth:Float = -1, containerHeight:Float = -1):DisplayObject;
 	/** destruct any children added into a container */
 	public function destruct(container:DisplayObjectContainer):Void;
 	
