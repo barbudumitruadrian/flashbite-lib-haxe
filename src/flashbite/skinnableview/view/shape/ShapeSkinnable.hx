@@ -84,6 +84,6 @@ class ShapeSkinnable extends Shape implements ISkinnableView
 			draw();
 		}
 		
-		return color = value;
+		return color;
 	}
 }
