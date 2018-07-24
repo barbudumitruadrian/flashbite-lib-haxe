@@ -6,6 +6,7 @@ import flashbite.skinnableview.ISkinnableViewCreator;
 import flashbite.skinnableview.SkinnableViewCreator;
 import flashbite.skinnableview.view.ISkinnableView;
 import openfl.Assets;
+import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.errors.Error;
 import openfl.events.Event;
@@ -122,9 +123,14 @@ class ExampleBase extends Sprite implements IDisposable
 	private function onStageResize(e:Event):Void
 	{
 		if (_skinnableViewCreator != null) {
+			var startTime = Lib.getTimer();
+			
 			_skinnableViewCreator.resize(this, MAIN_SCREEN_NAME, stage.stageWidth, stage.stageHeight);
 			
 			internalOnStageResize();
+			
+			var totalTimeInMs = Lib.getTimer() - startTime;
+			Logger.debug(this, "Total time onStageResize " + totalTimeInMs + " ms.");
 		}
 	}
 	

@@ -3,10 +3,12 @@ package examples.flashbite;
 import examples.flashbite.ExampleBase;
 import examples.flashbite.ExampleNames;
 import examples.flashbite.complex.Complex;
+import examples.flashbite.horizontal_layout.HorizontalLayoutExample;
 import examples.flashbite.nine_slice.NineSlice;
 import examples.flashbite.simple.Simple;
 import examples.flashbite.text_center_on_y.TextCenterOnY;
 import examples.flashbite.text_with_color.TextWithColor;
+import examples.flashbite.vertical_layout.VerticalLayoutExample;
 import flashbite.logger.Logger;
 import openfl.display.Sprite;
 import openfl.events.KeyboardEvent;
@@ -26,7 +28,9 @@ class ExamplesExplorer extends Sprite
 		new ExampleClassToNameMap(ExampleNames.COMPLEX, Complex),
 		new ExampleClassToNameMap(ExampleNames.TEXT_CENTER_ON_Y, TextCenterOnY),
 		new ExampleClassToNameMap(ExampleNames.TEXT_WITH_COLOR, TextWithColor),
-		new ExampleClassToNameMap(ExampleNames.NINE_SLICE, NineSlice)
+		new ExampleClassToNameMap(ExampleNames.NINE_SLICE, NineSlice),
+		new ExampleClassToNameMap(ExampleNames.VERTICAL_LAYOUT, VerticalLayoutExample),
+		new ExampleClassToNameMap(ExampleNames.HORIZONTAL_LAYOUT, HorizontalLayoutExample)
 	];
 	private var _currentExample:ExampleClassToNameMap;
 	
