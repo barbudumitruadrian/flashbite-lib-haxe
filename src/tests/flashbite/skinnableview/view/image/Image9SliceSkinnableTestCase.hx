@@ -1,11 +1,11 @@
 package tests.flashbite.skinnableview.view.image;
 
-import flashbite.skinnableview.model.ISkinnableData;
-import flashbite.skinnableview.model.SkinnableData;
-import flashbite.skinnableview.model.skinstyle.ISkinObject;
-import flashbite.skinnableview.model.skinstyle.SkinObject;
+import flashbite.helpers.HelpersGlobal;
+import flashbite.skinnableview.ISkinnableViewCreator;
+import flashbite.skinnableview.SkinnableViewCreator;
 import flashbite.skinnableview.view.image.Image9SliceSkinnable;
 import haxe.unit.TestCase;
+import openfl.display.Sprite;
 
 /**
  * TestCase for ImageSkinnable
@@ -15,38 +15,49 @@ import haxe.unit.TestCase;
 @:final
 class Image9SliceSkinnableTestCase extends TestCase
 {
+	private var _skinnableViewCreator:ISkinnableViewCreator;
+	private var _container:Sprite;
+	private var _styleXml:Xml;
+	
 	// ------------------------------------------------------------------------------------------------------------------------------------
 	public function new() { super(); }
 	
 	override public function setup():Void
 	{
 		super.setup();
-	}
-	
-	override public function tearDown():Void
-	{
-		super.tearDown();
-	}
-	// ------------------------------------------------------------------------------------------------------------------------------------
-	
-	public function test_props():Void
-	{
-		var skinXmlString:String = '<Image fileName="alert_border_full2" width="40" height="60" name="alert_border_full2" x="0" y="0" alpha="1" color="0x666666"/>';
-		var skinnableDataXmlString:String = 
+		
+		_skinnableViewCreator = new SkinnableViewCreator();
+		_container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<Image9Slice fileName="alert_border_full2" width="40" height="60" name="alert_border_full2" x="0" y="0" alpha="1" color="0x666666"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		_styleXml = Xml.parse(styleXmlString).firstElement();
+	}
+	
+	override public function tearDown():Void
+	{
+		super.tearDown();
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 100, 100, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 100, 100);
-		var image = new Image9SliceSkinnable(skinObj, skinnableData);
+		_skinnableViewCreator = null;
+		_container = null;
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------------
+	
+	public function test_props():Void
+	{
+		_skinnableViewCreator.initialize(_styleXml, null, null, "", 100, 100);
+		_skinnableViewCreator.construct(_container, "main", 100, 100);
+		var image:Image9SliceSkinnable = cast HelpersGlobal.getChildByName(_container, "alert_border_full2");
 		
 		assertEquals(Std.parseFloat("0"), image.x);
 		assertEquals(Std.parseFloat("0"), image.y);
@@ -61,22 +72,9 @@ class Image9SliceSkinnableTestCase extends TestCase
 	
 	public function test_set_dimension():Void
 	{
-		var skinXmlString:String = '<Image fileName="alert_border_full2" width="40" height="60" name="alert_border_full2" x="0" y="0" alpha="1" color="0x666666"/>';
-		var skinnableDataXmlString:String = 
-		'<style>' +
-			'<texts/>' +
-			'<textFormats/>' +
-			'<screens>' +
-				'<screen name="main">' +
-					'<style/>' +
-				'</screen>' +
-			'</screens>' +
-		'</style>';
-		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 100, 100, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 100, 100);
-		var image = new Image9SliceSkinnable(skinObj, skinnableData);
+		_skinnableViewCreator.initialize(_styleXml, null, null, "", 100, 100);
+		_skinnableViewCreator.construct(_container, "main", 100, 100);
+		var image:Image9SliceSkinnable = cast HelpersGlobal.getChildByName(_container, "alert_border_full2");
 		
 		//bmpData must have the specified dimension in skinObj
 		assertEquals(40, image.bitmapData.width);

@@ -1,11 +1,11 @@
 package tests.flashbite.skinnableview.view.text;
 
-import flashbite.skinnableview.model.ISkinnableData;
-import flashbite.skinnableview.model.SkinnableData;
-import flashbite.skinnableview.model.skinstyle.ISkinObject;
-import flashbite.skinnableview.model.skinstyle.SkinObject;
+import flashbite.helpers.HelpersGlobal;
+import flashbite.skinnableview.ISkinnableViewCreator;
+import flashbite.skinnableview.SkinnableViewCreator;
 import flashbite.skinnableview.view.text.TextFieldWithValueSkinnable;
 import haxe.unit.TestCase;
+import openfl.display.Sprite;
 
 /**
  * TestCase for TextFieldWithValueSkinnable
@@ -31,22 +31,27 @@ class TextFieldWithValueSkinnableTestCase extends TestCase
 	
 	public function test_setValue():Void
 	{
-		var skinXmlString:String = '<Text content="{value} data" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0"/>';
-		var skinnableDataXmlString:String = 
+		var skinnableViewCreator:ISkinnableViewCreator = new SkinnableViewCreator();
+		var container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<TextWithValue content="{value} data" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0" name="tf"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		var styleXml = Xml.parse(styleXmlString).firstElement();
+		skinnableViewCreator.initialize(styleXml, null, null, "", 300, 300);
+		skinnableViewCreator.construct(container, "main", 300, 300);
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 300, 300, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 300, 300);
-		var tf = new TextFieldWithValueSkinnable(skinObj, skinnableData);
+		var tf:TextFieldWithValueSkinnable = cast HelpersGlobal.getChildByName(container, "tf");
+		
 		tf.setValue("100");
 		
 		assertEquals("100 data", tf.text);
@@ -67,44 +72,54 @@ class TextFieldWithValueSkinnableTestCase extends TestCase
 	
 	public function test_setValue_empty_inLeft():Void
 	{
-		var skinXmlString:String = '<Text content="{value} data" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0"/>';
-		var skinnableDataXmlString:String = 
+		var skinnableViewCreator:ISkinnableViewCreator = new SkinnableViewCreator();
+		var container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<TextWithValue content="{value} data" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0" name="tf"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		var styleXml = Xml.parse(styleXmlString).firstElement();
+		skinnableViewCreator.initialize(styleXml, null, null, "", 100, 100);
+		skinnableViewCreator.construct(container, "main", 100, 100);
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 300, 300, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 300, 300);
-		var tf = new TextFieldWithValueSkinnable(skinObj, skinnableData);
+		var tf:TextFieldWithValueSkinnable = cast HelpersGlobal.getChildByName(container, "tf");
+		
 		tf.setValue("");
 		
 		assertEquals(" data", tf.text);
 	}
 	public function test_setValue_empty_inRight():Void
 	{
-		var skinXmlString:String = '<Text content="data {value}" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0"/>';
-		var skinnableDataXmlString:String = 
+		var skinnableViewCreator:ISkinnableViewCreator = new SkinnableViewCreator();
+		var container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<TextWithValue content="data {value}" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0" name="tf"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		var styleXml = Xml.parse(styleXmlString).firstElement();
+		skinnableViewCreator.initialize(styleXml, null, null, "", 100, 100);
+		skinnableViewCreator.construct(container, "main", 100, 100);
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 300, 300, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 300, 300);
-		var tf = new TextFieldWithValueSkinnable(skinObj, skinnableData);
+		var tf:TextFieldWithValueSkinnable = cast HelpersGlobal.getChildByName(container, "tf");
+		
 		tf.setValue("");
 		
 		assertEquals("data ", tf.text);
@@ -112,22 +127,26 @@ class TextFieldWithValueSkinnableTestCase extends TestCase
 	
 	public function test_setValue_WithTruncationEnabled():Void
 	{
-		var skinXmlString:String = '<Text content="data {value}" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0" truncate="true" truncationValue="..."/>';
-		var skinnableDataXmlString:String = 
+		var skinnableViewCreator:ISkinnableViewCreator = new SkinnableViewCreator();
+		var container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<TextWithValue content="data {value}" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0" truncate="true" truncationValue="..." name="tf"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		var styleXml = Xml.parse(styleXmlString).firstElement();
+		skinnableViewCreator.initialize(styleXml, null, null, "", 100, 100);
+		skinnableViewCreator.construct(container, "main", 100, 100);
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 40, 40, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 40, 40);
-		var tf = new TextFieldWithValueSkinnable(skinObj, skinnableData);
+		var tf:TextFieldWithValueSkinnable = cast HelpersGlobal.getChildByName(container, "tf");
 		
 		//with truncation enabled and text not fitting, setValue will crash due to 
 		var hasError:Bool = false;
@@ -145,22 +164,26 @@ class TextFieldWithValueSkinnableTestCase extends TestCase
 	}
 	public function test_setValue_withNewText():Void
 	{
-		var skinXmlString:String = '<Text content="{value} data" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0"/>';
-		var skinnableDataXmlString:String = 
+		var skinnableViewCreator:ISkinnableViewCreator = new SkinnableViewCreator();
+		var container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<TextWithValue content="{value} data" width="100%" height="100%" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" valueTextFormat="Museo_Slab_900_Regular_50_center_0xFFFFFF_0" name="tf"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		var styleXml = Xml.parse(styleXmlString).firstElement();
+		skinnableViewCreator.initialize(styleXml, null, null, "", 100, 100);
+		skinnableViewCreator.construct(container, "main", 100, 100);
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 300, 300, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 300, 300);
-		var tf = new TextFieldWithValueSkinnable(skinObj, skinnableData);
+		var tf:TextFieldWithValueSkinnable = cast HelpersGlobal.getChildByName(container, "tf");
 		
 		//new text doesn't contain replacement, so we will use initialText
 		tf.setValue("", "test");

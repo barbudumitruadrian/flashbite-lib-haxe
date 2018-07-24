@@ -1,11 +1,11 @@
 package tests.flashbite.skinnableview.view.text;
 
-import flashbite.skinnableview.model.ISkinnableData;
-import flashbite.skinnableview.model.SkinnableData;
-import flashbite.skinnableview.model.skinstyle.ISkinObject;
-import flashbite.skinnableview.model.skinstyle.SkinObject;
+import flashbite.helpers.HelpersGlobal;
+import flashbite.skinnableview.ISkinnableViewCreator;
+import flashbite.skinnableview.SkinnableViewCreator;
 import flashbite.skinnableview.view.text.TextFieldWithColorSkinnable;
 import haxe.unit.TestCase;
+import openfl.display.Sprite;
 
 /**
  * TestCase for TextFieldWithColorSkinnable
@@ -31,22 +31,27 @@ class TextFieldWithColorSkinnableTestCase extends TestCase
 	
 	public function test_setColor():Void
 	{
-		var skinXmlString:String = '<TextWithColor width="100" height="5" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0"/>';
-		var skinnableDataXmlString:String = 
+		var skinnableViewCreator:ISkinnableViewCreator = new SkinnableViewCreator();
+		var container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<TextWithColor width="100" height="5" textFormat="Museo_Slab_900_Regular_50_center_0x064413_0" name="tf"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		var styleXml = Xml.parse(styleXmlString).firstElement();
+		skinnableViewCreator.initialize(styleXml, null, null, "", 100, 100);
+		skinnableViewCreator.construct(container, "main", 100, 100);
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 100, 100, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 100, 100);
-		var tf = new TextFieldWithColorSkinnable(skinObj, skinnableData);
+		var tf:TextFieldWithColorSkinnable = cast HelpersGlobal.getChildByName(container, "tf");
+		
 		tf.setText("100");
 		tf.color = 0xFF0000;
 		

@@ -1,11 +1,11 @@
 package tests.flashbite.skinnableview.view.movieclip;
 
-import flashbite.skinnableview.model.ISkinnableData;
-import flashbite.skinnableview.model.SkinnableData;
-import flashbite.skinnableview.model.skinstyle.ISkinObject;
-import flashbite.skinnableview.model.skinstyle.SkinObject;
+import flashbite.helpers.HelpersGlobal;
+import flashbite.skinnableview.ISkinnableViewCreator;
+import flashbite.skinnableview.SkinnableViewCreator;
 import flashbite.skinnableview.view.movieclip.MovieClipSkinnable;
 import haxe.unit.TestCase;
+import openfl.display.Sprite;
 
 /**
  * TestCase for TextFieldSkinnable
@@ -31,22 +31,26 @@ class MovieClipSkinnableTestCase extends TestCase
 	
 	public function test_data():Void
 	{
-		var skinXmlString:String = '<MovieClip width="100" height="5" filePrefix="image_" frameRate="30" numFrames="10"/>';
-		var skinnableDataXmlString:String = 
+		var skinnableViewCreator:ISkinnableViewCreator = new SkinnableViewCreator();
+		var container = new Sprite();
+		
+		var styleXmlString = 
 		'<style>' +
 			'<texts/>' +
 			'<textFormats/>' +
 			'<screens>' +
 				'<screen name="main">' +
-					'<style/>' +
+					'<style>' +
+						'<MovieClip width="100" height="5" filePrefix="image_" frameRate="30" numFrames="10" name="mc"/>' +
+					'</style>' +
 				'</screen>' +
 			'</screens>' +
 		'</style>';
+		var styleXml = Xml.parse(styleXmlString).firstElement();
+		skinnableViewCreator.initialize(styleXml, null, null, "", 100, 100);
+		skinnableViewCreator.construct(container, "main", 100, 100);
 		
-		var skinObj:ISkinObject = new SkinObject(Xml.parse(skinXmlString).firstElement(), 100, 100, false);
-		var skinnableData:ISkinnableData = new SkinnableData();
-		skinnableData.initialize(Xml.parse(skinnableDataXmlString).firstElement(), null, null, "en", 100, 100);
-		var movieclip = new MovieClipSkinnable(skinObj, skinnableData);
+		var movieclip:MovieClipSkinnable = cast HelpersGlobal.getChildByName(container, "mc");
 		
 		assertEquals(0, movieclip.currentFrame);
 		
