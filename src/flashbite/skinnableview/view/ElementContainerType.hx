@@ -2,6 +2,8 @@ package flashbite.skinnableview.view;
 
 import flashbite.helpers.HelpersString;
 import flashbite.skinnableview.view.button.SimpleButton;
+import flashbite.skinnableview.view.layout.HorizontalLayout;
+import flashbite.skinnableview.view.layout.VerticalLayout;
 
 /**
  * Holds all element containers that ISkinnableViewCreator can create in his initial state
@@ -14,11 +16,13 @@ class ElementContainerType
 	private function new() {}
 	
 	
-	public static inline var SIMPLE_BUTTON:String = "SimpleButton";
+	public static inline var SIMPLE_BUTTON		:String = "SimpleButton";
+	public static inline var VERTICAL_LAYOUT	:String = "VerticalLayout";
+	public static inline var HORIZONTAL_LAYOUT	:String = "HorizontalLayout";
 	
 	
-	private static var _all:Array<String> =         [SIMPLE_BUTTON];
-	private static var _allClasses:Array<Dynamic> = [SimpleButton];
+	private static var _all:Array<String> =         [SIMPLE_BUTTON, VERTICAL_LAYOUT, HORIZONTAL_LAYOUT];
+	private static var _allClasses:Array<Dynamic> = [SimpleButton,  VerticalLayout,  HorizontalLayout];
 	
 	public static function getAll():Array<String> { return _all.copy(); }
 	public static function isKnown(type:String, caseInsensitive:Bool = true):Bool
