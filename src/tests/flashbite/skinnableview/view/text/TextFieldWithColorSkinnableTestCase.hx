@@ -53,8 +53,14 @@ class TextFieldWithColorSkinnableTestCase extends TestCase
 		var tf:TextFieldWithColorSkinnable = cast HelpersGlobal.getChildByName(container, "tf");
 		
 		tf.setText("100");
-		tf.color = 0xFF0000;
-		
 		assertEquals("100", tf.text);
+		
+		//color
+		tf.color = 0xFF0000;
+		assertEquals(0xFF0000, tf.color);
+		
+		//wrong value on color, it should not change
+		tf.color = -1;
+		assertEquals(0xFF0000, tf.color);
 	}
 }

@@ -65,5 +65,14 @@ class MovieClipSkinnableTestCase extends TestCase
 		
 		movieclip.currentFrame = -1;
 		assertEquals(0, movieclip.currentFrame); //first frame
+		
+		//color
+		movieclip.color = 0x666666;
+		assertEquals(Std.parseInt("0x666666"), movieclip.transform.colorTransform.color);
+		assertEquals(0x666666, movieclip.color);
+		
+		//wrong value on color, it should not change
+		movieclip.color = -1;
+		assertEquals(0x666666, movieclip.color);
 	}
 }

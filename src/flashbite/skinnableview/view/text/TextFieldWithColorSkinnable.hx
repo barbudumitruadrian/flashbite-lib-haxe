@@ -11,7 +11,7 @@ import flashbite.skinnableview.model.skinstyle.ISkinObject;
  */
 class TextFieldWithColorSkinnable extends TextFieldSkinnable
 {
-	public var color(null, set):Int = -1;
+	@:isVar public var color(get, set):Int = -1;
 	
 	// ====================================================================================================================================
 	// CONSTRUCTOR, DESTRUCTOR
@@ -25,16 +25,18 @@ class TextFieldWithColorSkinnable extends TextFieldSkinnable
 	}
 	
 	// ====================================================================================================================================
-	// SETTERS
+	// GETTERS, SETTERS
 	// ====================================================================================================================================
 	
+	function get_color():Int { return color; }
 	function set_color(value:Int):Int
 	{
 		if (color != value && value >= 0) {
 			_initialTextFormat.color = value;
 			setText(this.text);
+			color = value;
 		}
 		
-		return color = value;
+		return color;
 	}
 }

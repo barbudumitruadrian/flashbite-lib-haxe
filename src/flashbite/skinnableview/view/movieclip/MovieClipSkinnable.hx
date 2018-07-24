@@ -25,7 +25,7 @@ class MovieClipSkinnable extends Bitmap implements ISkinnableView implements IPl
 {
 	public var skinObj(get, null):ISkinObject;
 	
-	public var color(null, set):Int = -1;
+	@:isVar public var color(get, set):Int = -1;
 	
 	private var _fallbackBmpData:BitmapData;
 	
@@ -155,15 +155,18 @@ class MovieClipSkinnable extends Bitmap implements ISkinnableView implements IPl
 	
 	function get_skinObj():ISkinObject { return skinObj; }
 	
+	function get_color():Int { return color; }
 	function set_color(value:Int):Int
 	{
 		if (color != value && value >= 0) {
 			var colorInfo = this.transform.colorTransform;
 			colorInfo.color = value;
 			this.transform.colorTransform = colorInfo;
+			
+			color = value;
 		}
 		
-		return color = value;
+		return color;
 	}
 	
 	function get_currentFrame():Int { return currentFrame; }

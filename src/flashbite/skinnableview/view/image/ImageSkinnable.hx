@@ -95,8 +95,10 @@ class ImageSkinnable extends Bitmap implements ISkinnableView
 			var colorInfo = this.transform.colorTransform;
 			colorInfo.color = value;
 			this.transform.colorTransform = colorInfo;
+			
+			color = value;
 		}
 		
-		return color = value;
+		return color;
 	}
 }

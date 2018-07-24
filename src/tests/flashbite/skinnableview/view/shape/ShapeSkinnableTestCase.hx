@@ -85,7 +85,7 @@ class ShapeSkinnableTestCase extends TestCase
 		shape.color = 0x666666;
 		assertEquals(0x666666, shape.color);
 		
-		//now wrong value
+		//wrong value on color, it should not change
 		shape.color = -1;
 		assertEquals(0x666666, shape.color);
 	}

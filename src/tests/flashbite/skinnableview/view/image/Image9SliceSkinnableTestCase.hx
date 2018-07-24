@@ -64,6 +64,11 @@ class Image9SliceSkinnableTestCase extends TestCase
 		assertEquals(Std.parseFloat("40"), image.width);
 		assertEquals(Std.parseFloat("60"), image.height);
 		assertEquals(Std.parseInt("0x666666"), image.transform.colorTransform.color);
+		assertEquals(0x666666, image.color);
+		
+		//wrong value on color, it should not change
+		image.color = -1;
+		assertEquals(0x666666, image.color);
 		
 		//bmpData must have the specified dimension in skinObj
 		assertEquals(40, image.bitmapData.width);
