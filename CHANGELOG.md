@@ -1,3 +1,9 @@
+1.4.0 (23/07/2018)
+------------------
+* added beta versions of HorizontalLayout and VerticalLayout in order to show items into a simple layout + test cases + examples.
+* fixing setter of color in ShapeSkinnable, Image9SliceSkinnable, ImageSkinnable, MovieClipSkinnable and TextFieldWithColorSkinnable + adding test cases.
+
+
 1.3.3 (06/07/2018)
 ------------------
 * SkinnableViewCreator - updated constructChild to calculate itself the dimensions of the child to create.
