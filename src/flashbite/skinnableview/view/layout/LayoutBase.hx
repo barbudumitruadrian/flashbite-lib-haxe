@@ -25,7 +25,7 @@ class LayoutBase extends ContainerBase
 	{
 		super(skinObj, skinnableData);
 		
-		(cast (layoutData, LayoutData)).readFromRawObject(skinObj.rawObject);
+		(cast (layoutData, LayoutData)).readFromObject(skinObj.rawObject);
 	}
 	
 	override public function dispose():Void

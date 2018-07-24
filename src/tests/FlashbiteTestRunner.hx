@@ -18,7 +18,11 @@ import tests.flashbite.skinnableview.view.ContainerBaseTestCase;
 import tests.flashbite.skinnableview.view.button.SimpleButtonTestCase;
 import tests.flashbite.skinnableview.view.image.Image9SliceSkinnableTestCase;
 import tests.flashbite.skinnableview.view.image.ImageSkinnableTestCase;
+import tests.flashbite.skinnableview.view.layout.HorizontalLayoutTestCase;
+import tests.flashbite.skinnableview.view.layout.VerticalLayoutTestCase;
+import tests.flashbite.skinnableview.view.layout.data.LayoutDataTestCase;
 import tests.flashbite.skinnableview.view.movieclip.MovieClipSkinnableTestCase;
+import tests.flashbite.skinnableview.view.shape.ShapeSkinnableTestCase;
 import tests.flashbite.skinnableview.view.text.TextFieldSkinnableTestCase;
 import tests.flashbite.skinnableview.view.text.TextFieldWithColorSkinnableTestCase;
 import tests.flashbite.skinnableview.view.text.TextFieldWithValueSkinnableTestCase;
@@ -63,11 +67,21 @@ class FlashbiteTestRunner extends TestRunner
 		
 		//flashbite.skinnableview.view
 		add(new ContainerBaseTestCase());
+			//button
 		add(new SimpleButtonTestCase());
-		add(new ContainerBaseTestCase());
+			//image
 		add(new Image9SliceSkinnableTestCase());
 		add(new ImageSkinnableTestCase());
+			//layout
+		add(new HorizontalLayoutTestCase());
+		add(new VerticalLayoutTestCase());
+				//data
+		add(new LayoutDataTestCase());
+			//movieclip
 		add(new MovieClipSkinnableTestCase());
+			//shape
+		add(new ShapeSkinnableTestCase());
+			//text
 		add(new TextFieldSkinnableTestCase());
 		add(new TextFieldWithColorSkinnableTestCase());
 		add(new TextFieldWithValueSkinnableTestCase());

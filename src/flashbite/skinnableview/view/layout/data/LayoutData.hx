@@ -3,7 +3,6 @@ package flashbite.skinnableview.view.layout.data;
 import flashbite.align.HorizontalAlign;
 import flashbite.align.VerticalAlign;
 import flashbite.helpers.HelpersGlobal;
-import flashbite.skinnableview.model.skinstyle.IRawObject;
 
 /**
  * Data of a layout
@@ -28,12 +27,12 @@ class LayoutData implements ILayoutData
 	// PUBLIC
 	// ====================================================================================================================================
 	
-	public function readFromRawObject(rawObject:IRawObject):Void
+	public function readFromObject(object:Dynamic):Void
 	{
-		padding = Std.parseFloat(rawObject.getPropertyValue("padding", true, Std.string(padding)));
-		verticalAlign = HelpersGlobal.getCaseInsensitivePropValue(rawObject, "verticalAlign", verticalAlign, VerticalAlign.getAll());
-		horizontalAlign = HelpersGlobal.getCaseInsensitivePropValue(rawObject, "horizontalAlign", horizontalAlign, HorizontalAlign.getAll());
-		autoSizePadding = HelpersGlobal.translateToBoolean(rawObject.getPropertyValue("autoSizePadding", true, Std.string(autoSizePadding)));
+		padding = Std.parseFloat(HelpersGlobal.getCaseInsensitivePropValue(object, "padding", Std.string(padding)));
+		verticalAlign = HelpersGlobal.getCaseInsensitivePropValue(object, "verticalAlign", verticalAlign, VerticalAlign.getAll());
+		horizontalAlign = HelpersGlobal.getCaseInsensitivePropValue(object, "horizontalAlign", horizontalAlign, HorizontalAlign.getAll());
+		autoSizePadding = HelpersGlobal.translateToBoolean(HelpersGlobal.getCaseInsensitivePropValue(object, "autoSizePadding", Std.string(autoSizePadding)));
 	}
 	
 	// ====================================================================================================================================
