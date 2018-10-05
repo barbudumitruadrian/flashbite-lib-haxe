@@ -3,7 +3,7 @@
 	<!-- NMML reference: https://gist.github.com/1763850 -->
 	
 	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
-	<meta title="flashbite-lib-haxe" package="flashbite-lib-haxe" version="1.4.0" company="Adrian Barbu" />
+	<meta title="flashbite-lib-haxe" package="flashbite-lib-haxe" version="1.4.1" company="Adrian Barbu" />
 	
 	<!-- output -->
 	<app main="Main" file="flashbite-lib-haxe" path="bin" />

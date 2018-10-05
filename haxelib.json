@@ -4,9 +4,9 @@
 	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"classPath": "src/",
-	"releasenote": "added beta versions of HorizontalLayout and VerticalLayout in order to show items into a simple layout. @see CHANGELOG.md",
+	"releasenote": "ShapeSkinnable - now is using a Bitmap in order be visible when a BitmapData.draw is performed on it. @see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],
 	"dependencies": {
 		"openfl": "",

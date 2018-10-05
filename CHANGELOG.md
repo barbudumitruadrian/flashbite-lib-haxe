@@ -1,3 +1,8 @@
+1.4.1 (05/10/2018)
+------------------
+* ShapeSkinnable - now is using a Bitmap in order be visible when a BitmapData.draw is performed on it.
+
+
 1.4.0 (23/07/2018)
 ------------------
 * added beta versions of HorizontalLayout and VerticalLayout in order to show items into a simple layout + test cases + examples.
