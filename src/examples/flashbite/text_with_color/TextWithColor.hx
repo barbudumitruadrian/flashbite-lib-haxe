@@ -1,6 +1,8 @@
 package examples.flashbite.text_with_color;
+
 import flashbite.helpers.HelpersGlobal;
 import flashbite.logger.Logger;
+import flashbite.skinnableview.view.text.TextFieldSkinnable;
 import flashbite.skinnableview.view.text.TextFieldWithColorSkinnable;
 import motion.Actuate;
 import motion.actuators.IGenericActuator;
@@ -14,6 +16,8 @@ import motion.actuators.IGenericActuator;
 @:final
 class TextWithColor extends ExampleBase
 {
+	private var _titleTxt:TextFieldSkinnable;
+	
 	private var _txt:TextFieldWithColorSkinnable;
 	
 	private var _delay:IGenericActuator;
@@ -26,6 +30,7 @@ class TextWithColor extends ExampleBase
 	
 	override public function dispose():Void 
 	{
+		_titleTxt = null;
 		_txt = null;
 		if (_delay != null) {
 			Actuate.stop(_delay, null, false, false);
@@ -56,8 +61,11 @@ class TextWithColor extends ExampleBase
 	override private function internalInitialize():Void
 	{
 		_txt = cast HelpersGlobal.getChildByName(this, "center.txt");
+		_titleTxt = cast HelpersGlobal.getChildByName(this, "titleTxt");
 		
 		_delay = Actuate.timer(1).onComplete(updateTxtColor);
+		
+		updateTitle();
 	}
 	override private function internalStart():Void
 	{
@@ -68,7 +76,14 @@ class TextWithColor extends ExampleBase
 	
 	override private function internalOnStageResize():Void
 	{
-		//nothing
+		updateTitle();
+	}
+	
+	private function updateTitle():Void
+	{
+		if (_titleTxt != null) {
+			_titleTxt.setText("Simple example of changing color on a text");
+		}
 	}
 	
 	private function updateTxtColor():Void
