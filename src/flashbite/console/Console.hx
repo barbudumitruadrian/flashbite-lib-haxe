@@ -20,7 +20,7 @@ import openfl.text.TextField;
 @:final
 class Console extends Sprite implements ILoggerTarget implements IDisposable
 {
-	private static inline var MAX_LOG_LENGTH:Int = 100;
+	private static inline var MAX_LOG_LENGTH:Int = 150;
 	
 	public static inline var REMOVED:String = "Console__REMOVED";
 	
@@ -37,7 +37,7 @@ class Console extends Sprite implements ILoggerTarget implements IDisposable
 	private var _close:Sprite;
 	private var _outputTxt:TextField;
 	
-	private static var MAX_NUM_LINES:Int = 20;
+	private static var MAX_NUM_LINES:Int = 2000;
 	private var _outputLines:Array<String> = [];
 	
 	// ====================================================================================================================================
@@ -269,7 +269,7 @@ class Console extends Sprite implements ILoggerTarget implements IDisposable
 			
 			if (_rendererName == null) {
 				try {
-					_rendererName = stage.window.renderer.type.getName();
+					_rendererName = stage.window.context.type;
 				} catch (e:Dynamic) {
 					_rendererName = "--UNKNOWN--";
 				}

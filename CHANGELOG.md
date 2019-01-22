@@ -1,3 +1,7 @@
+1.5.0 (22/01/2019)
+------------------
+* update to OpenFL 8.8.0 and Lime 7.2.1
+
 1.4.1 (05/10/2018)
 ------------------
 * ShapeSkinnable - now is using a Bitmap in order be visible when a BitmapData.draw is performed on it.

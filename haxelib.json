@@ -4,9 +4,9 @@
 	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"classPath": "src/",
-	"releasenote": "ShapeSkinnable - now is using a Bitmap in order be visible when a BitmapData.draw is performed on it. @see CHANGELOG.md",
+	"releasenote": "update to OpenFL 8.8.0 and Lime 7.2.1 @see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],
 	"dependencies": {
 		"openfl": "",
