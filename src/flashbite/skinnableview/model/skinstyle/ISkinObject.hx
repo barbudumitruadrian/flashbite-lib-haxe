@@ -67,4 +67,7 @@ interface ISkinObject extends IResizable
 	
 	/** raw representation of data */
 	public var rawObject(get, null):IRawObject;
+	
+	/** update a property */
+	public function updateProperty(propertyName:String, propertyValue:String):Void;
 }

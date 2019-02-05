@@ -1,6 +1,13 @@
+1.5.1 (05/02/2019)
+------------------
+* TextFieldSkinnable - removing warning log for non-embed Font if the text is empty;
+* SkinnableViewCreator - adding global value for the number of elements created;
+* ISkinObject - added posibility to change internal values with updateProperty function.
+
 1.5.0 (22/01/2019)
 ------------------
 * update to OpenFL 8.8.0 and Lime 7.2.1
+
 
 1.4.1 (05/10/2018)
 ------------------

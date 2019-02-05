@@ -25,6 +25,8 @@ import openfl.errors.Error;
 @:final
 class SkinnableViewCreator implements ISkinnableViewCreator
 {
+	public static var NUM_ELEMENTS_CREATED:Int = 0;
+	
 	public var skinnableData(get, null):ISkinnableData;
 	@:isVar public var language(get, set):String;
 	
@@ -313,6 +315,10 @@ class SkinnableViewCreator implements ISkinnableViewCreator
 			}
 		}
 
+		if (newElement != null) {
+			NUM_ELEMENTS_CREATED++;
+		}
+		
 		return newElement;
 	}
 

@@ -262,6 +262,23 @@ class SkinObject implements ISkinObject implements IDisposable
 	public function clone():ISkinObject { return new SkinObject(_xml, _parentWidth, _parentHeight); }
 	
 	// =====================================================================================================================================
+	// UPDATE
+	// =====================================================================================================================================
+	
+	public function updateProperty(propertyName:String, propertyValue:String):Void
+	{
+		//set the property
+		Reflect.setProperty(rawObject, propertyName, propertyValue);
+		setProperty(propertyName, propertyValue);
+		//save it to xml
+		try {
+			_xml.set(propertyName, propertyValue);
+		} catch (e:Dynamic) {}
+		//and now resize it with the same old dimensions
+		resize(_parentWidth, _parentHeight);
+	}
+	
+	// =====================================================================================================================================
 	// update with a template
 	// =====================================================================================================================================
 	

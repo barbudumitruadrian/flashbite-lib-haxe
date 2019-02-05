@@ -20,7 +20,7 @@ import openfl.text.TextField;
 @:final
 class Console extends Sprite implements ILoggerTarget implements IDisposable
 {
-	private static inline var MAX_LOG_LENGTH:Int = 150;
+	private static inline var MAX_LOG_LENGTH:Int = 100;
 	
 	public static inline var REMOVED:String = "Console__REMOVED";
 	
@@ -37,7 +37,7 @@ class Console extends Sprite implements ILoggerTarget implements IDisposable
 	private var _close:Sprite;
 	private var _outputTxt:TextField;
 	
-	private static var MAX_NUM_LINES:Int = 2000;
+	private static var MAX_NUM_LINES:Int = 30;
 	private var _outputLines:Array<String> = [];
 	
 	// ====================================================================================================================================

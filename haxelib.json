@@ -4,9 +4,9 @@
 	"license": "Apache",
 	"tags": ["cross", "layout", "utility"],
 	"description": "Flashbite library for haxe language; it contains a list of helper classes, logging functionality and also a liquid layout+internationalization system.",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"classPath": "src/",
-	"releasenote": "update to OpenFL 8.8.0 and Lime 7.2.1 @see CHANGELOG.md",
+	"releasenote": "@see CHANGELOG.md",
 	"contributors": ["barbudumitruadrian"],
 	"dependencies": {
 		"openfl": "",

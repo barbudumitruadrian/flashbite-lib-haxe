@@ -183,8 +183,8 @@ class TextFieldSkinnable extends TextField implements ISkinnableView
 				}
 			}
 			
-			if (this.embedFonts == false) {
-				Logger.warning(this, "Unable to use embedFonts for fontName '" + _initialFontName + "', skinObj.textFormat = " + skinObj.textFormat);
+			if (this.embedFonts == false && this.text != "" && StringTools.trim(this.text) != "") {
+				Logger.warning(this, "Unable to use embedFonts for fontName '" + _initialFontName + "', skinObj.textFormat = " + skinObj.textFormat + ", text = '" + this.text + "'");
 			}
 		}
 		
