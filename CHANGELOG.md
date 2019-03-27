@@ -1,8 +1,14 @@
+1.5.2 (27/03/2019)
+------------------
+* HelpersDate.parseToDate updated to accept also C# DateTime ISO 8601 values.
+
+
 1.5.1 (05/02/2019)
 ------------------
 * TextFieldSkinnable - removing warning log for non-embed Font if the text is empty;
 * SkinnableViewCreator - adding global value for the number of elements created;
 * ISkinObject - added posibility to change internal values with updateProperty function.
+
 
 1.5.0 (22/01/2019)
 ------------------

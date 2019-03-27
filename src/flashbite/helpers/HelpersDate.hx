@@ -23,7 +23,7 @@ class HelpersDate
 		} else {
 			var date:Date = null;
 			//check format "yyyy-mm-ddThh:mm:ss.fffZ" or "yyyy-mm-ddThh:mm:ss"- ISO 8601
-			var isISOFormat = (str.indexOf("T") != -1 && (str.length == 24 || str.length == 19));
+			var isISOFormat = (str.indexOf("T") != -1 && (str.length >= 19));
 			if (isISOFormat) {
 				var year_hour_Split = str.split("T");
 				var yearsDataString = year_hour_Split[0];

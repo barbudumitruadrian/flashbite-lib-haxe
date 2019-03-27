@@ -83,6 +83,26 @@ class HelpersDateTestCase extends TestCase
 		assertEquals(date.getHours(), outDateMatch.getHours());
 		assertEquals(date.getMinutes(), outDateMatch.getMinutes());
 		assertEquals(date.getSeconds(), outDateMatch.getSeconds());
+		
+		//correct - format "yyyy-mm-ddThh:mm:ss._lots_of_ms+02:00"
+		var date = new Date(2018, 2, 15, 16, 29, 44); //2 is ~3 = March
+		var outDateMatch = HelpersDate.parseToDate("2018-03-15T16:29:44.2676176+02:00");
+		assertEquals(date.getFullYear(), outDateMatch.getFullYear());
+		assertEquals(date.getMonth(), outDateMatch.getMonth());
+		assertEquals(date.getDate(), outDateMatch.getDate());
+		assertEquals(date.getHours(), outDateMatch.getHours());
+		assertEquals(date.getMinutes(), outDateMatch.getMinutes());
+		assertEquals(date.getSeconds(), outDateMatch.getSeconds());
+		
+		//correct - format "yyyy-mm-ddThh:mm:ss._lots_of_msZ"
+		var date = new Date(2018, 2, 15, 16, 29, 44); //2 is ~3 = March
+		var outDateMatch = HelpersDate.parseToDate("2018-03-15T16:29:44.2676176Z");
+		assertEquals(date.getFullYear(), outDateMatch.getFullYear());
+		assertEquals(date.getMonth(), outDateMatch.getMonth());
+		assertEquals(date.getDate(), outDateMatch.getDate());
+		assertEquals(date.getHours(), outDateMatch.getHours());
+		assertEquals(date.getMinutes(), outDateMatch.getMinutes());
+		assertEquals(date.getSeconds(), outDateMatch.getSeconds());
 	}
 	
 	public function test_getDifferenceInSecondsBetween():Void
